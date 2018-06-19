@@ -34,7 +34,7 @@ LANDING PAGE - HEADER
 }
 
 .active{
-  color: white 
+  color: white
 }
 
 .join{
@@ -278,5 +278,86 @@ span > a > img{
 
 #copyright > a:hover{
   text-decoration: underline;
+}
+
+
+
+/*********************
+Sign in / Log in Page
+*********************/
+
+.login-form, .signin-form{
+  margin: 100px auto;
+  min-width: 300px;
+  max-width: 300px;
+  background: rgba(70, 52, 78, 0.537);
+  box-shadow: 0 0 2px 1px rgba(10, 10, 10, 0.456);
+}
+
+.login-form{
+  height: 400px;
+}
+
+#log-form{
+  border-top: 1px solid orange
+}
+
+input[name="firstname"],
+input[name="lastname"],
+input[name="email"],
+input[name="password"],
+input[name="confirm-password"]{
+  width: 80%;
+  margin: 1em auto;
+  box-sizing: border-box;
+}
+
+input[name="email"]{
+  padding: .8em .7em;
+}
+
+input[type="email"]{
+  border: none;
+  border-bottom: 2px solid #dcdde1;
+  color: white;
+}
+
+#login-button{
+  font-size: 1rem;
+  margin: 2em auto 1em;
+  display: block;
+  padding: .8em 5em;
+  border: 1px solid rgb(230, 230, 230);
+  border-radius: 3px;
+  color: rgba(230, 230, 230, 0.873);
+  cursor: pointer;
+  width: 80%;
+}
+
+#login-button:hover{
+  color: #46344E;
+  background: rgba(255, 255, 255, 0.756);
+}
+
+#options{
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1.6em;
+  color: rgba(0, 0, 0, 0.831);
+}
+
+#check{
+  height: .6rem
+}
+
+#check + h4{
+  font-size: .9rem;
+  display: inline-block;
+}
+
+#forget-pass{
+  font-size: .7rem;
+  padding-top: .3em
 }
 
