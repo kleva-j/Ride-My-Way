@@ -57,7 +57,7 @@ a:hover{
               to bottom right,
               rgb(68, 51, 76, .6),
               rgb(68, 51, 76, .8)),
-              url("images/carpooling.jpg");
+              url("../images/carpooling.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
