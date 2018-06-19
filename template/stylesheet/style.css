@@ -361,3 +361,15 @@ input[type="email"]{
   padding-top: .3em
 }
 
+
+/**********************
+Register / Sign up Page
+***********************/
+
+.signin-form{
+  margin: 50px auto;
+  min-width: 300px;
+  max-width: 400px;
+  padding-bottom: 35px
+}
+
