@@ -141,3 +141,96 @@ input[type='text'], input[type='date'], input[type='password']{
   color: #46344E;
   background: white;
 }
+
+/******************************************************/
+
+/*********************
+  LANDING PAGE - SECTION
+*********************/
+
+.description{
+  margin: 80px 0;
+  text-align: center;
+  background: rgb(249, 252, 255);
+}
+
+.details{
+  padding: 10px 0 30px;
+  background: rgba(255, 255, 255, 0.537)
+}
+
+.static{
+  font-size: 2rem;
+  margin: 50px 0;
+  font-family: tahoma;
+}
+
+.content{
+  color: black;
+  display: flex;
+  margin: 20px;
+  justify-content: space-around;
+}
+
+.info{
+  width: 30%;
+}
+
+.info > img{
+  height: 80px;
+}
+
+.data-info, .data-info + p{
+  color: rgba(0, 0, 0, 0.836)
+}
+
+.data-info + p{
+  font-family: basic;
+}
+
+.clients{
+  background: #94889b;
+  display: flex;
+  font-size: 1rem;
+}
+
+.count{
+  padding: 50px 0;
+  text-align: center;
+  margin: 50px auto;
+  max-width: 200px;
+
+}
+
+.numbers{
+  font-size: 50px;
+  font-stretch: condensed;
+  font-weight: 200
+}
+
+.certify{
+  text-align: center;
+  margin: 150px 0 80px;
+}
+
+.heading{
+  padding: 50px 0 0;
+}
+
+e{
+  font-family: cursive;
+}
+
+.grid{
+  display: flex;
+  justify-content: space-around;
+  padding: 100px 0;
+}
+
+.col{
+  width: 30%;
+}
+
+.col > .data-info + .discuss{
+  letter-spacing: 0px
+}
