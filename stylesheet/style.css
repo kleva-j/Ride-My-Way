@@ -373,3 +373,81 @@ Register / Sign up Page
   padding-bottom: 35px
 }
 
+
+/**************
+  CATALOG PAGE
+***************/
+
+.search-head{
+  font-size: 1rem;
+  display: flex;
+  border: 2px solid #94889b;
+  justify-content: center;
+  padding: 1em 0 .6em;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 3px;
+}
+
+input[type="search"]{
+  font-size: .8rem;
+  padding: .3em 1.1em;
+  border-radius: 1em;
+  color: rgba(255, 255, 255, 0.89);
+  margin-right: 2em
+}
+
+input[type="submit"]{
+  font-size: .8rem;
+  color: #46344E;
+  color: white;
+  padding: .25em 1em;
+  cursor: pointer;
+  border-radius: .4em;
+  font-weight: 600;
+  border: 2px solid white;
+}
+
+input[type="submit"]:hover{
+  background: white;
+  color:#46344E;
+}
+
+.list_rides{
+  font-size: 1rem;
+  border: 2px solid #94889b;
+  width: 80%;
+  margin: 1em auto;
+  border-radius: 3px;
+  padding: .4em 0;
+}
+
+.ride{
+  font-size: 1rem;
+  text-align: start;
+  min-width: 12em;
+  max-width: 14em;
+  border: 1px solid gold;
+  padding: .5em;
+  margin: .5em;
+  height: 9em;
+  display: inline-block;
+}
+
+.connect{
+  font-size: 1rem;
+  margin: .5em auto;
+  text-align: center;
+  border: 1px solid white;
+  padding: .4em;
+  max-width: 8em;
+  border-radius: 1em;
+  color: white;
+  cursor: pointer;
+}
+
+.connect:hover, .connect > a:hover{
+  background: white;
+  color: #46344E
+}
+
