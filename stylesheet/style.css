@@ -1,0 +1,143 @@
+*{
+  padding: 0;
+  margin: 0;
+  font-family: basic;
+  box-sizing: border-box;
+}
+
+.body{
+  font-size: 16px;
+}
+
+.container{
+  scroll-behavior: smooth;
+}
+
+/********************
+LANDING PAGE - HEADER
+*********************/
+
+.nav-bar{
+  height: 50px;
+  display: flex;
+  font-weight: 700;
+  justify-content: space-between;
+}
+
+.logo{
+  font-size: 2rem;
+}
+
+.navigations{
+  display: flex;
+  align-items: center;
+}
+
+.active{
+  color: white
+}
+
+.join{
+  font-size: 1rem;
+  padding: 0 1em;
+}
+
+a{
+  color: rgb(210, 210, 210);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover{
+  color: white
+}
+
+.main{
+  background: linear-gradient(
+              to bottom right,
+              rgb(68, 51, 76, .6),
+              rgb(68, 51, 76, .8)),
+              url("images/carpooling.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.central{
+  position: absolute;
+  font-size: 1rem;
+  width: 98%;
+  top: 5em;
+}
+
+h1{
+  font-family: montserrat;
+  font-weight: 800;
+  padding-top: 80px;
+  font-size: 45px;
+  color: rgba(255, 255, 255, 0.742);
+}
+
+h1 + p{
+  font-size: 1.3rem;
+  margin: 1.6em 0;
+  line-height: 34px;
+  font-weight: 900;
+  color: white;
+  word-wrap: break-word
+}
+
+.message {
+  position: absolute;
+  bottom: 80px;
+  width: 98%;
+}
+
+h3{
+  line-height: 50px;
+  color:rgb(240, 240, 240);
+  font-family: basic
+}
+
+input{
+  background: transparent;
+  border-bottom: 2px solid white;
+}
+
+input[type='text'], input[type='date'], input[type='password']{
+  padding:10px;
+  border: none;
+  border-bottom: 2px solid #dcdde1;
+  margin-right: 40px;
+  color: white;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(255, 255, 255, 0.742);
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(255, 255, 255, 0.742);
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(255, 255, 255, 0.742);
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: rgba(255, 255, 255, 0.742);
+}
+
+#button{
+  color: white;
+  border: 2px solid white;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 600
+}
+
+#button:hover{
+  color: #46344E;
+  background: white;
+}
