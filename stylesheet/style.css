@@ -142,7 +142,6 @@ input[type='text'], input[type='date'], input[type='password']{
   background: white;
 }
 
-/******************************************************/
 
 /*********************
   LANDING PAGE - SECTION
@@ -188,7 +187,9 @@ input[type='text'], input[type='date'], input[type='password']{
   font-family: basic;
 }
 
-.clients{
+
+/***  SECTION2 *****/
+.stats{
   background: #94889b;
   display: flex;
   font-size: 1rem;
@@ -207,6 +208,8 @@ input[type='text'], input[type='date'], input[type='password']{
   font-stretch: condensed;
   font-weight: 200
 }
+
+/*  SECTION3 */
 
 .certify{
   text-align: center;
@@ -234,3 +237,46 @@ e{
 .col > .data-info + .discuss{
   letter-spacing: 0px
 }
+
+
+/********
+  FOOTER
+*********/
+
+footer{
+  background: #46344E;
+  color: white;
+  color: rgba(255, 255, 255, 0.729)
+}
+
+#footer-top{
+  padding-top: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+
+span > a > img{
+  height: 25px;
+  padding: 0 2px;
+}
+
+.column > div > a{
+  color: rgba(0, 0, 0, 0.756);
+}
+
+#footer-bottom{
+  border-top: 1px solid black;
+  padding: 20px;
+  margin: 20px 20px 0
+}
+
+#copyright > a{
+  margin: 0 5px 0 10px;
+  display: inline-block;
+  color: black;
+}
+
+#copyright > a:hover{
+  text-decoration: underline;
+}
+
