@@ -13,6 +13,49 @@
   scroll-behavior: smooth;
 }
 
+.burgar-nav{
+  float: right;
+  display: none;
+  cursor: pointer;
+  padding: 0 10px 10px;
+}
+
+.menu_wake{
+  content: "";
+  display: inline-block;
+  position: relative;
+  opacity: 1;
+  height: 3px;
+  width: 30px;
+  background-color: white;
+  transition: -webkit-transform 400ms ease;
+  transition: transform 400ms ease;
+  transition: transform 400ms ease -webkit-transform 400ms ease;
+}
+
+.menu_wake:before, .menu_wake:after{
+  content:"";
+  display: block;
+  position:absolute;
+  opacity: 1;
+  height: 3px;
+  width: 30px;
+  background-color: white;
+}
+
+.menu_wake:before{
+  top: 8px;
+  transition: opacity 400ms ease;
+}
+
+.menu_wake:after{
+  top:16px;
+  transition: -webkit-transform 400ms ease;
+  transition: transform 400ms ease;
+  transition: transform 400ms ease -webkit-transform 400ms ease;
+}
+
+
 /********************
 LANDING PAGE - HEADER
 *********************/
@@ -502,7 +545,7 @@ input[type="submit"]:hover{
     width: 90%;
     margin: 5px auto;
   }
-  
+
   #search{
     width: 89%;
     margin-top: 3px;
