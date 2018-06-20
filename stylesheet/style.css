@@ -55,6 +55,17 @@
   transition: transform 400ms ease -webkit-transform 400ms ease;
 }
 
+.dropdown{
+  position: absolute;
+  border: 1px solid white;
+  display: block;
+  width: 90%;
+  text-align: center;
+  border-radius: 4px;
+  background: #46344E;
+}
+
+
 
 /********************
 LANDING PAGE - HEADER
