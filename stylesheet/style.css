@@ -502,4 +502,11 @@ input[type="submit"]:hover{
     width: 90%;
     margin: 5px auto;
   }
+  
+  #search{
+    width: 89%;
+    margin-top: 3px;
+    border-radius: 8px;
+  }
+
 }
