@@ -427,27 +427,79 @@ input[type="submit"]:hover{
   text-align: start;
   min-width: 12em;
   max-width: 14em;
-  border: 1px solid gold;
   padding: .5em;
   margin: .5em;
   height: 9em;
   display: inline-block;
+  color:  black;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.811);
 }
 
 .connect{
   font-size: 1rem;
-  margin: .5em auto;
+  margin: .4em auto;
   text-align: center;
-  border: 1px solid white;
+  border: 1px solid #46344E;
   padding: .4em;
   max-width: 8em;
   border-radius: 1em;
-  color: white;
   cursor: pointer;
 }
 
-.connect:hover, .connect > a:hover{
-  background: white;
-  color: #46344E
+.connect > a{
+  color: #46344E;
 }
 
+
+.connect:hover, .connect > a:hover{
+  background: white;
+}
+
+
+
+/****************************
+          MEDIA QUERY
+*****************************/
+
+@media (max-width:440px){
+  .menu_wake, .menu_wake:before, .menu_wake:after{
+    height: 2px;
+    width: 25px;
+  }
+
+  .menu_wake:before{
+    top: 7px;
+  }
+
+  .menu_wake:after{
+    top: 14px;
+  }
+}
+
+@media (max-width: 640px){
+  .nav-bar{
+    background: #46344E
+  }
+
+  .burgar-nav{
+    display: block;
+  }
+
+  .navigations{
+    display: none;
+    position: absolute;
+  }
+
+  .join{
+    padding: 4px;
+    margin: 0px auto;
+    border-bottom: 1px solid white;
+  }
+
+  /* View Rides*/
+  #search-from, #where-to{
+    width: 90%;
+    margin: 5px auto;
+  }
+}
