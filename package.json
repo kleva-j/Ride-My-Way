@@ -1,0 +1,22 @@
+{
+  "name": "ride-my-way",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "A carpooling application that provides drivers with the ability to create ride offers and passengers to join available ride offers."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kleva-j/Ride-My-Way.git"
+  },
+  "author": "Michael Obasi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kleva-j/Ride-My-Way/issues"
+  },
+  "homepage": "https://github.com/kleva-j/Ride-My-Way#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1"
+  }
+}
