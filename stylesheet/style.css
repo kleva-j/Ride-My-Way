@@ -645,7 +645,7 @@ input[id="date"],
   RIDE DETAILS
 ***************/
 .request{
-  border-top: 1px solid khaki;
+  border-top: 1px solid orange;
   text-align: start;
   padding: 30px;
 }
