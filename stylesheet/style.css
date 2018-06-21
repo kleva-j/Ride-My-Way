@@ -640,6 +640,43 @@ input[id="date"],
 }
 
 
+
+/**************
+  RIDE DETAILS
+***************/
+.request{
+  border-top: 1px solid khaki;
+  text-align: start;
+  padding: 30px;
+}
+.request > p{
+  color: rgba(255, 255, 255, 0.859);
+  padding: 10px 0;
+}
+.request > p > strong{
+  color: black;
+  padding: 0 3px;
+}
+
+#join_button{
+  border: 2px solid white;
+  padding: 9px 8px;
+  width: 150px;
+  text-align: center;
+  margin: 20px auto 0;
+  border-radius: 4px;
+  color:white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#join_button:hover{
+  color: #46344E;
+  background: white
+}
+
+
+
 /****************************
           MEDIA QUERY
 *****************************/
