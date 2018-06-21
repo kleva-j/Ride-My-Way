@@ -613,6 +613,33 @@ input[type="submit"]:hover{
 }
 
 
+
+/**************
+  CREATE OFFER
+***************/
+input[name="start"],
+input[name="stop"],
+input[id="date"],
+#ridebutton{
+  width: 80%;
+  margin: .9em auto;
+}
+
+#ridebutton{
+  margin-top: 2em;
+  padding: 1em 0;
+  border-radius: .3em;
+  color: rgba(255, 255, 255, 0.893);
+  font-weight: 600;
+  cursor: pointer
+}
+
+#ridebutton:hover{
+  color: #46344E;
+  background: white;
+}
+
+
 /****************************
           MEDIA QUERY
 *****************************/
