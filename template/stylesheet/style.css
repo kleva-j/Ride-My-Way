@@ -512,6 +512,99 @@ input[type="submit"]:hover{
 
 
 
+
+/**************
+  PROFILE PAGE
+***************/
+
+.display-tab{
+  font-size: 1rem;
+  margin: .5em auto;
+  height: 34em;
+  display: flex;
+  padding: 0;
+  background: none;
+  border: 0;
+}
+
+.side_panel, .main_panel{
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.891);
+  border-radius: 3px;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.side_panel{
+  min-width: 160px;
+  max-width: 18.75em;
+  margin-right: .4em;
+  flex-grow: 1;
+  text-align: start;
+}
+
+.nav{
+  padding: .5em 1em;
+  background: #46344E;
+  color: white;
+  border-top: 1px solid white;
+  cursor: pointer;
+}
+
+.main_panel{
+  flex-grow: 2;
+  min-width: 12em;
+  max-width: 39em;
+  text-align: start;
+  overflow: hidden;
+}
+
+.top-header, .top-panel{
+  height: 2.5em;
+  border-radius: .2em;
+}
+
+.resize{
+  display: none;
+}
+
+.detail{
+  padding: 2em;
+  background: rgba(70, 52, 78, 0.205);
+}
+
+.profile-image > img{
+  height: 10em;
+  border-radius: 50%;
+  padding-bottom: 1em
+}
+
+.detail, .offer, .listings{
+  height: 93%;
+  overflow: auto
+}
+
+.listings{
+  width: 100%;
+  padding: 0 15px
+}
+
+.taken > h4{
+  margin: 15px auto 0;
+  text-decoration: underline;
+  width: 100%;
+  text-align: center
+}
+
+.ridelist{
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid #46344E;
+  padding: 5px;
+  justify-content: space-around
+}
+
+
 /****************************
           MEDIA QUERY
 *****************************/
@@ -528,6 +621,18 @@ input[type="submit"]:hover{
 
   .menu_wake:after{
     top: 14px;
+  }
+
+  .side_panel{
+    display: none
+  }
+
+  .top-header{
+    height: 4em
+  }
+
+  .resize{
+    display: flex;
   }
 }
 
