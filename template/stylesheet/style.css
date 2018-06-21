@@ -584,6 +584,14 @@ input[type="submit"]:hover{
   overflow: auto
 }
 
+.add > p > a{
+  font-size: .8em
+}
+
+.add > p > a:hover{
+  color: #46344E
+}
+
 .listings{
   width: 100%;
   padding: 0 15px
