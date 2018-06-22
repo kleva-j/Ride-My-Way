@@ -17,7 +17,7 @@ class RideMiddleware {
    * @memberof RideMiddleware
    */
   static getAllRides(req, res) {
-    res.status(200).send({
+    res.status(200).json({
       message: 'Gotten all rides successfully',
       data: rides
     });

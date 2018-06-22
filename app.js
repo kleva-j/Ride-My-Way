@@ -7,8 +7,8 @@ const app = express();
 // use middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use('/rides', rideRouter);
 
+app.use('/api/v1', rideRouter);
 
 app.get('/', (req, res) => {
   res.status(200).send('Welcome to Ride-My-Way Api');

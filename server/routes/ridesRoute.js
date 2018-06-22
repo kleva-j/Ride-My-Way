@@ -5,7 +5,7 @@ const { getAllRides } = RideMiddleware;
 
 const rideRouter = express.Router();
 
-rideRouter.route('./rides')
+rideRouter.route('/rides')
   .get(getAllRides);
 
 export default rideRouter;
