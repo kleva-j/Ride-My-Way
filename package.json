@@ -12,6 +12,11 @@
     "type": "git",
     "url": "git+https://github.com/kleva-j/Ride-My-Way.git"
   },
+  "keywords": [
+    "Ridw-My-Way",
+    "Drivers",
+    "Passengers"
+  ],
   "author": "Michael Obasi",
   "license": "ISC",
   "bugs": {
