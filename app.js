@@ -1,11 +1,13 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import rideRouter from './server/routes/ridesRoute';
 
 const app = express();
 
 // use middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use('/rides', rideRouter);
 
 
 app.get('/', (req, res) => {

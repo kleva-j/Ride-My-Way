@@ -5,8 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "",
-    "build": "npm run clean && babel template server -d dist",
-    "clean": "rm -r dist && mkdir dist"
+    "build": "npm run clean && babel template server -d dist && babel app.js -d dist",
+    "clean": "rm -r dist && mkdir dist",
+    "start": "nodemon --exec babel-node app.js"
   },
   "repository": {
     "type": "git",

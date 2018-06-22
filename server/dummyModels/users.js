@@ -20,7 +20,7 @@ const users = [
     firstname: 'Osuji',
     lastname: 'Kelechi',
     email: 'osuji@kelechi.com',
-    gender: 'M',
+    gender: 'male',
     password: 'anima@c#lay'
   },
   {
@@ -28,15 +28,15 @@ const users = [
     firstname: 'jeff',
     lastname: 'bezos',
     email: 'jeff@bezos.com',
-    gender: 'M',
+    gender: 'male',
     password: 'jeffbezos'
   },
   {
     id: 5,
     firstname: 'Brown Sindy',
-    lastname: '',
+    lastname: 'Sindy',
     email: 'brown@sindy.com',
-    gender: 'M',
+    gender: 'male',
     password: 'brownsindy'
   }
 ];
