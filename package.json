@@ -5,8 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "",
-    "build": "npm run clean && babel template server -d dist",
-    "clean": "rm -r dist && mkdir dist"
+    "build": "npm run clean && babel template server -d dist && babel app.js -d dist",
+    "clean": "rm -r dist && mkdir dist",
+    "start": "nodemon --exec babel-node app.js"
   },
   "repository": {
     "type": "git",
@@ -29,5 +30,10 @@
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.12.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "nodemon": "^1.17.5"
   }
 }
