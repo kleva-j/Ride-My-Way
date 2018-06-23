@@ -7,8 +7,7 @@ const rides = [
       lastname: 'Ada',
       gender: 'female'
     },
-    time: '8:00 am',
-    date: '25 - 07 - 2018',
+    date: '2018 - 07 - 21',
     pasengers: [
       {
         firstname: 'Ayo',
@@ -30,8 +29,7 @@ const rides = [
       lastname: 'Chuma',
       gender: 'female'
     },
-    time: '8:00 am',
-    date: '26 - 07 - 2018',
+    date: '2018 - 07 - 28',
     pasengers: [
       {
         firstname: 'casandra',
@@ -53,8 +51,7 @@ const rides = [
       lastname: 'kelechi',
       gender: 'male'
     },
-    time: '8:00 am',
-    date: '25 - 07 - 2018',
+    date: '2018 - 07 - 23',
     pasengers: [
       {
         firstname: 'casandra',
