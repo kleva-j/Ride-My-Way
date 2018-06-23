@@ -1,8 +1,9 @@
 const rides = [
   {
+    id: 1,
     start: 'Yaba',
     stop: 'Oshodi',
-    Driver: {
+    driver: {
       firstname: 'Monoca',
       lastname: 'Ada',
       gender: 'female'
@@ -22,9 +23,10 @@ const rides = [
     ]
   },
   {
+    id: 2,
     start: 'Maryland',
     stop: 'Obanikoro',
-    Driver: {
+    driver: {
       firstname: 'casandra',
       lastname: 'Chuma',
       gender: 'female'
@@ -44,9 +46,10 @@ const rides = [
     ]
   },
   {
+    id: 3,
     start: 'Yaba',
     stop: 'Maryland',
-    Driver: {
+    driver: {
       firstname: 'Nelson',
       lastname: 'kelechi',
       gender: 'male'
