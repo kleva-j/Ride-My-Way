@@ -55,7 +55,7 @@ class RideController {
     });
     if (gottenRide) {
       res.status(201).json({
-        message: 'Ride request added successfully!',
+        message: 'Ride request sent successfully!',
         data: gottenRide
       });
     } else {
