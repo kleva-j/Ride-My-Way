@@ -7,14 +7,14 @@ node_js:
 #     - "node_modules"
 # before_install:
 #   - cd server
-env:
-  global:
-    - CC_TEST_REPORTER_ID=60d2e3d3908a8dd4f8758139083b1f1fb88cd8e4ff6132aa7a4c7b70a209296d
-before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
-script:
-  - bundle exec rspec
-after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+# env:
+#   global:
+#     - CC_TEST_REPORTER_ID=60d2e3d3908a8dd4f8758139083b1f1fb88cd8e4ff6132aa7a4c7b70a209296d
+# before_script:
+#   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+#   - chmod +x ./cc-test-reporter
+#   - ./cc-test-reporter before-build
+# script:
+#   - bundle exec rspec
+# after_script:
+#   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
