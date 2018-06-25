@@ -12,3 +12,5 @@ userRouter.route('/login')
   .post(AuthLogin, SignInUser);
 userRouter.route('/signup')
   .post(AuthInputLength, AuthSignUp, RegisterUser);
+
+export default userRouter;
