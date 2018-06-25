@@ -73,7 +73,7 @@ class RideMiddleware {
   }
 
   /**
-   * Get rides by date
+   * Get rides by destination
    *
    * @static
    * @param {object} req - The request object

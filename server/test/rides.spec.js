@@ -51,12 +51,12 @@ describe('API endpoint /rides', () => {
         expect(res).to.be.an('object');
       }));
 
-  // Make a ride offer
+  // Make a ride request
   it('should return a new ride offer', () =>
     chai.request(app)
       .post(`${ridesRoute}/:rideId/requests`)
       .then((res) => {
-        expect(res.status).to.equal(401);
+        expect(res.status).to.equal(404);
         expect(res.body).to.be.an('object');
       }));
 });
