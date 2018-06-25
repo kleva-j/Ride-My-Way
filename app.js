@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import rideRouter from './server/routes/ridesRoute';
+import userRouter from './server/routes/userRoute';
 
 const app = express();
 
@@ -9,6 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api/v1', rideRouter);
+app.use('/api/v1/auth', userRouter);
 
 app.get('/', (req, res) => {
   res.status(200).send('Welcome to Ride-My-Way Api');
