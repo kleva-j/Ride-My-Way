@@ -3,7 +3,7 @@ import Validator from 'validator';
 
 /**
  * @class Auth
- * @classdesc Auths user input
+ * @classdesc Authenticates user input
  */
 class Auth {
   /**
