@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   "root": true,
   "extends": "airbnb-base",
   "env": {
@@ -23,11 +23,11 @@ module.exports = {
       "requireReturnDescription": true
     }],
     "require-jsdoc": ["error", {
-        "require": {
-            "FunctionDeclaration": true,
-            "MethodDefinition": true,
-            "ClassDeclaration": true
-        }
+      "require": {
+        "FunctionDeclaration": true,
+        "MethodDefinition": true,
+        "ClassDeclaration": true
+      }
     }]
   }
-}
+};

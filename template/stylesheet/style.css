@@ -343,17 +343,17 @@ Sign in / Log in Page
 .login-form, .signin-form{
   margin: 100px auto;
   min-width: 300px;
-  max-width: 300px;
+  max-width: 340px;
   background: rgba(70, 52, 78, 0.537);
   box-shadow: 0 0 2px 1px rgba(10, 10, 10, 0.456);
 }
 
 .login-form{
-  height: 400px;
+  height: 300px;
 }
 
 #log-form{
-  border-top: 1px solid orange
+  border-top: 1px solid orange;
 }
 
 input[name="firstname"],
@@ -384,6 +384,7 @@ input[type="email"]{
   border: 1px solid rgb(230, 230, 230);
   border-radius: 3px;
   color: rgba(230, 230, 230, 0.873);
+  color: #46344E;
   cursor: pointer;
   width: 80%;
 }
@@ -439,7 +440,7 @@ Register / Sign up Page
   justify-content: center;
   padding: 1em 0 .6em;
   width: 80%;
-  margin: 0 auto;
+  margin: 50px auto 30px;
   border-radius: 3px;
 }
 
@@ -476,18 +477,22 @@ input[type="submit"]:hover{
   padding: .4em 0;
 }
 
+.catalog{
+  height: 70vh;
+  text-align: left;
+}
+
 .ride{
   font-size: 1rem;
-  text-align: start;
   min-width: 12em;
   max-width: 14em;
   padding: .5em;
   margin: .5em;
-  height: 9em;
   display: inline-block;
   color:  black;
   border-radius: 4px;
   background: rgba(255, 255, 255, 0.811);
+  list-style-type: none;
 }
 
 .connect{
@@ -619,7 +624,7 @@ input[type="submit"]:hover{
 ***************/
 input[name="start"],
 input[name="stop"],
-input[id="date"],
+input[type="number"],
 #ridebutton{
   width: 80%;
   margin: .9em auto;
@@ -638,6 +643,24 @@ input[id="date"],
   color: #46344E;
   background: white;
 }
+
+input[type="number"],
+input[type="time"]{
+  color: white;
+  padding: 1em 0;
+  border: none;
+  border-bottom: 2px solid white;
+}
+
+.box{
+  display: flex;
+  width: 80%;
+  margin:auto;
+}
+input[type="time"]{
+  width: 50%
+}
+
 
 
 
