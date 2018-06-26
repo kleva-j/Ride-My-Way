@@ -19,7 +19,7 @@ class userController {
    * @memberof userController
    */
   static RegisterUser(req, res) {
-    // if(isEmpty(v))
+    // if(isEmpty(v)) 
     const hashPassword = SHA256(req.body.password).toString();
     const {
       firstname, lastname, username, email
