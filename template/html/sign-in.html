@@ -10,6 +10,7 @@
     <meta name="author" content="Michael Obasi">
     <title>Ride my way | Sign In </title>
     <link rel="stylesheet" href="../stylesheet/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Basic" rel="stylesheet">
   </head>
 
   <body>
@@ -18,7 +19,7 @@
       <header class="main">
         <nav class="nav-bar">
           <div class="logo">
-            <strong>Ride-My-Way</strong>
+            <strong>Ride My Way</strong>
           </div>
           <div class="navigations">
             <div class="join">
@@ -28,9 +29,12 @@
               <a href="sign-up.html">Signup</a>
             </div>
           </div>
+          <a href="#" class="burgar-nav">
+            <span class="menu_wake"></span>
+          </a>
         </nav>
         <section class="login-form">
-          <h3>ALREADY HAVE AN ACCOUNT?</h3>
+          <h3>Log In</h3>
           <form action="catalog.html" method="get" id="log-form">
             <input type="email" name="email" id="email" placeholder="Email" autocomplete="email" required>
             <input type="password" name="password" id="password" placeholder="Password" required minlength="6">
@@ -41,11 +45,15 @@
                 <h4>Remember Me</h4>
               </label>
             </div>
+            <div class="sign-in">
+              <h3>Don't have an account? <a href="sign-up.html"> SIGN UP</a></h3>
+            </div>
           </form>
         </section>
       </header>
 
     </div>
+    <script src="../js/main.js"></script>
   </body>
 
 </html>

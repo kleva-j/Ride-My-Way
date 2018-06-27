@@ -79,7 +79,9 @@ LANDING PAGE - HEADER
 }
 
 .logo{
-  font-size: 2rem;
+  font-size: 1.5rem;
+  color: white;
+  padding: 15px 18px;
 }
 
 .navigations{
@@ -202,7 +204,6 @@ input[type='text'], input[type='date'], input[type='password']{
 *********************/
 
 .description{
-  margin: 80px 0;
   text-align: center;
   background: rgb(249, 252, 255);
 }
@@ -221,7 +222,7 @@ input[type='text'], input[type='date'], input[type='password']{
 .content{
   color: black;
   display: flex;
-  margin: 20px;
+  margin: 30px;
   justify-content: space-around;
 }
 
@@ -267,11 +268,11 @@ input[type='text'], input[type='date'], input[type='password']{
 
 .certify{
   text-align: center;
-  margin: 150px 0 80px;
+  margin: 50px 0;
 }
 
 .heading{
-  padding: 50px 0 0;
+  padding: 50px 0;
 }
 
 e{
@@ -281,7 +282,7 @@ e{
 .grid{
   display: flex;
   justify-content: space-around;
-  padding: 100px 0;
+  padding: 80px 0 50px;
 }
 
 .col{
@@ -324,6 +325,11 @@ span > a > img{
   margin: 20px 20px 0
 }
 
+#copyright{
+  display: flex;
+  justify-content: center
+}
+
 #copyright > a{
   margin: 0 5px 0 10px;
   display: inline-block;
@@ -332,6 +338,7 @@ span > a > img{
 
 #copyright > a:hover{
   text-decoration: underline;
+  align-content: center
 }
 
 
@@ -341,16 +348,13 @@ Sign in / Log in Page
 *********************/
 
 .login-form, .signin-form{
-  margin: 100px auto;
+  margin: 80px auto;
   min-width: 300px;
   max-width: 340px;
   background: rgba(70, 52, 78, 0.537);
   box-shadow: 0 0 2px 1px rgba(10, 10, 10, 0.456);
 }
 
-.login-form{
-  height: 300px;
-}
 
 #log-form{
   border-top: 1px solid orange;
@@ -411,12 +415,20 @@ input[type="email"]{
   display: inline-block;
 }
 
-#forget-pass{
-  font-size: .7rem;
-  padding-top: .3em
+.sign-in{
+  border-top: 1px solid orange;
+  width: 80%;
+  margin: 20px auto 0;
+  font-size: .9em
 }
 
+.sign-in > h3 > a{
+  color: rgb(199, 149, 57);
+}
 
+.sign-in > h3 > a:hover{
+  color: orange
+}
 /**********************
 Register / Sign up Page
 ***********************/
@@ -425,7 +437,7 @@ Register / Sign up Page
   margin: 50px auto;
   min-width: 300px;
   max-width: 400px;
-  padding-bottom: 35px
+  padding-bottom: 2px
 }
 
 
@@ -439,7 +451,7 @@ Register / Sign up Page
   border: 2px solid #94889b;
   justify-content: center;
   padding: 1em 0 .6em;
-  width: 80%;
+  width: 95%;
   margin: 50px auto 30px;
   border-radius: 3px;
 }
@@ -468,6 +480,12 @@ input[type="submit"]:hover{
   color:#46344E;
 }
 
+.search-head > form > input[type="time"]{
+  width: 90px;
+  margin-right: 20px;
+  padding: 0;
+}
+
 .list_rides{
   font-size: 1rem;
   border: 2px solid #94889b;
@@ -475,23 +493,25 @@ input[type="submit"]:hover{
   margin: 1em auto;
   border-radius: 3px;
   padding: .4em 0;
+  overflow: auto;
 }
 
 .catalog{
-  height: 70vh;
+  height: 68vh;
   text-align: left;
+  width: 95%;
 }
 
 .ride{
   font-size: 1rem;
   min-width: 12em;
-  max-width: 14em;
   padding: .5em;
-  margin: .5em;
+  margin: .5em .5em;
   display: inline-block;
   color:  black;
   border-radius: 4px;
   background: rgba(255, 255, 255, 0.811);
+  background: white;
   list-style-type: none;
 }
 
@@ -512,7 +532,7 @@ input[type="submit"]:hover{
 
 
 .connect:hover, .connect > a:hover{
-  background: white;
+  background: rgba(222, 222, 222, 0.811);;
 }
 
 
@@ -542,7 +562,7 @@ input[type="submit"]:hover{
 
 .side_panel{
   min-width: 160px;
-  max-width: 18.75em;
+  max-width: 13.75em;
   margin-right: .4em;
   flex-grow: 1;
   text-align: start;
@@ -576,6 +596,7 @@ input[type="submit"]:hover{
 .detail{
   padding: 2em;
   background: rgba(70, 52, 78, 0.205);
+  text-align: center;
 }
 
 .profile-image > img{
@@ -584,7 +605,7 @@ input[type="submit"]:hover{
   padding-bottom: 1em
 }
 
-.detail, .offer, .listings{
+.detail, .offer, .listings, listings2{
   height: 93%;
   overflow: auto
 }
@@ -612,9 +633,32 @@ input[type="submit"]:hover{
 .ridelist{
   display: flex;
   width: 100%;
-  border-bottom: 1px solid #46344E;
+  /* border-bottom: 1px solid #46344E; */
   padding: 5px;
-  justify-content: space-around
+  justify-content: space-around;
+  margin: 0;
+}
+
+/* .offer{
+  display: flex
+} */
+
+.ride_data{
+  display: flex;
+}
+.date, 
+.time, 
+.start, 
+.stop, 
+.passengers{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.ridelist h5{
+  padding: 10px;
+  border-bottom: 1px solid black;
 }
 
 
@@ -677,7 +721,7 @@ input[type="time"]{
   padding: 10px 0;
 }
 .request > p > strong{
-  color: black;
+  color: white;
   padding: 0 3px;
 }
 
@@ -726,12 +770,48 @@ input[type="time"]{
     height: 4em
   }
 
+  .resize  .nav, .resize > .top-panel{
+    border-right: 1px solid white;
+  }  
+
   .resize{
     display: flex;
+  }
+
+  .content{
+    display: block;
+  }
+
+  .info{
+    width: 100%;
+    margin: 30px 0
+  }
+
+  .grid{
+    padding: 0;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .col{
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  .message{
+    display: none;
+  }
+
+  .display-tab{
+    width: 100%;
   }
 }
 
 @media (max-width: 640px){
+  .display-tab{
+    width: 95%;
+  }
+
   .nav-bar{
     background: #46344E
   }
@@ -752,15 +832,42 @@ input[type="time"]{
   }
 
   /* View Rides*/
-  #search-from, #where-to{
+  #search-from, #where-to, #time{
     width: 90%;
     margin: 5px auto;
+  }
+
+  .search-head{
+    margin-top: 5px;
   }
 
   #search{
     width: 89%;
     margin-top: 3px;
     border-radius: 8px;
+  }
+
+  #data{
+    margin: 5px 0 0 70px;
+  }
+
+  .catalog{
+    display: inline-block;
+    height: 55vh;
+  }
+
+  #button{
+    margin-top: 20px
+  }
+  .count{
+    font-size: .5em
+  }
+  .count h4{
+    font-size: 1.5em;
+  }
+
+  .logo{
+    padding: 7px 18px;
   }
 
 }
