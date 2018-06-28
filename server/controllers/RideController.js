@@ -87,6 +87,47 @@ class RideController {
       data: gottenRide
     });
   }
+
+  /**
+   * Get specific rides
+   *
+   * @static
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @param {function} next - The next middleware
+   * @return {object} Message and data of the rides
+   * @memberof RideMiddleware
+   */
+  static getRides(req, res, next) {
+    const { date, stop } = req.query;
+    if (!date && !stop) {
+      return next();
+    }
+    let filteredRides;
+    if (date && stop) {
+      filteredRides = rides.filter(ride => ride.date.toLowerCase() === date.toLowerCase()
+      && ride.stop.toLowerCase() === stop.toLowerCase());
+    }
+    if(stop) {
+      filteredRides += rides.filter(ride => ride.stop.toLowerCase() === stop.toLowerCase());
+    }
+    if(date) {
+      filteredRides += rides.filter(ride => ride.date.toLowerCase() === date.toLowerCase());
+    }
+    if(!filteredRides){
+      res.status(404).json({
+        message: 'Not Found',
+        error : 'Ride not found in the database'
+      })
+    }
+    else {
+      res.status(200).json({
+        message: 'Ride gotten successfully',
+        data: filteredRides
+      })
+    }
+  }
+
 }
 
 export default RideController;
