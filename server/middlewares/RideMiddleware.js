@@ -4,24 +4,55 @@
  */
 class RideValidator {
   /**
-   *  validate date
+   *  validate input
    * @static
    * @param {object} req - The request object
    * @param {object} res - The response object
    * @param {function} next - The next middleware
    * @memberof RideValidator
    */
-  static validateDate (req, res, next){
-    const { date } = req.body;
-    let stat = date.split('-').join(',');
+  static validateInput (req, res, next){
+    const { start, date, stop, driver } = req.body;
+    let date = date.split('-').join(',');
     let error;
 
+    if(!start) {
+      error.start = 'A Location is required'
+    }
+
+    if(start.match(/w/g) !== date){
+      error.stop = 'please input a valid destination'
+    }
+
+    if(start && start.length < 3){
+      error.start.length = 'Please enter a valid input length is required'
+    }
+
     if(!date) {
-      error.date = 'A Valid Date is required'
+      error.date = 'A Date is required'
     }
 
     if(!(/[a-z]/g).test(stat)){
-      error.message = 'Please input a valid date'
+      error.date = 'Please input a valid date'
+    }
+
+    if(!stop) {
+      error.stop = 'A Destination is required'
+    }
+
+    if(stop.match(/w/g) !== date){
+      error.stop = 'please input a valid destination'
+    }
+    if(stop && stop.length < 3){
+      error.stop.length = 'Please enter a valid input length is required'
+    }
+
+    if(!driver) {
+      error.driver = `Driver's details are required`
+    }
+    const { name, gender, id } = req.body;
+    if( name && gender && id ) {
+      error.driver = `Valid 'NAME', 'GENDER', and 'ID' are required`
     }
 
     if(!error) next();
@@ -29,29 +60,6 @@ class RideValidator {
   }
 
   /**
-   *  validate stop
-   * @static
-   * @param {object} req - The request object
-   * @param {object} res - The response object
-   * @param {function} next - The next middleware
-   * @memberof RideValidator
-   */
-  static validateDestination (req, res, next){
-    const { stop } = req.body;
-    let error;
-
-    if(!stop) {
-      error.stop = 'Valid Date is required'
-    }
-
-    if(date.match(/w/g) !== date){
-      error.message = 'please input a valid location'
-    }
-
-    if(!error) next();
-    res.status(400).json({ error });
-  }
-    /**
    *  validate id
    * @static
    * @param {object} req - The request object
@@ -68,3 +76,5 @@ class RideValidator {
   }
 
 }
+
+export default RideValidator;
