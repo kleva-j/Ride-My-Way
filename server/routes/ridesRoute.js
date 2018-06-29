@@ -2,23 +2,21 @@ import express from 'express';
 import RideMiddleware from '../middlewares/RideMiddleware';
 import RideController from '../controllers/RideController';
 
-const {
-  getByDateAndDest, getByDate, getByDestination, getAllRides
-} = RideMiddleware;
+const { validateDate, validateStop, validateID } = RideMiddleware;
 
-const { createRideOffer, makeRequestToJoin, getRide } = RideController;
+const { createRideOffer, makeRequestToJoin, getSpecificRide, getRides } = RideController;
 
 const rideRouter = express.Router();
 
 rideRouter.route('/rides')
-  .post(createRideOffer)
-  .get(getByDate, getByDestination, getByDateAndDest, getAllRides);
+  .post(validateDate, validateStop, createRideOffer)
+  .get(getRides);
 
 rideRouter.route('/rides/:rideId')
-  .get(getRide);
+  .get(validateID, getSpecificRide);
 
 rideRouter.route('/rides/:rideId/requests')
-  .post(makeRequestToJoin);
+  .post(validateID, makeRequestToJoin);
 
 
 export default rideRouter;
