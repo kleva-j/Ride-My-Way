@@ -6,9 +6,20 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 const ridesRoute = '/api/v1/rides';
-// const userRoute = 'api/v1/users';
 
-describe('API endpoint /rides', () => {
+const rideRq =   {
+  driverID: 105,
+  request: [
+    {
+      name: 'Andrew Samuel',
+      gender: 'male',
+      reqStatus: 'confirmed'
+    }
+  ]
+}
+
+
+describe('RIDE CONTROLLER', () => {
   // GET - list all rides
   it('should return all rides', () =>
     chai.request(app)
