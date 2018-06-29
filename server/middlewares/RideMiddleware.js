@@ -1,100 +1,44 @@
-import model from '../dummyModels/index';
-
-const { rides } = model;
 /**
- * @class BusinessMiddleware
- * @classdesc Implements user being able to get businesses by location and category
+ * @class RideValidator
+ * @classdesc Validates request params to request for rides.
  */
-class RideMiddleware {
+class RideValidator {
   /**
-   * Get all rides
-   *
-   * @static
-   * @param {object} req - The request object
-   * @param {object} res - The response object
-   * @return {object} Message and data of all rides
-   * @memberof RideMiddleware
+   *  validate date
    */
-  static getAllRides(req, res) {
-    res.status(200).json({
-      message: 'Gotten all rides successfully',
-      data: rides
-    });
+  static validateDate (req, res, next){
+    const { date } = req.body;
+    let stat = date.split('-').join(',');
+    let error;
+    
+    if(!date) {
+      error.date = 'A Valid Date is required'
+    }
+
+    if(!(/[a-z]/g).test(stat)){
+      error.message = 'Please input a valid date'
+    }    
+
+    if(!error) next();
+    res.status(400).json({ error });
   }
 
   /**
-   * Get specific rides
-   *
-   * @static
-   * @param {object} req - The request object
-   * @param {object} res - The response object
-   * @param {function} next - The next middleware
-   * @return {object} Message and data of the rides
-   * @memberof RideMiddleware
+   *  validate stop
    */
-  static getByDateAndDest(req, res, next) {
-    const { date, stop } = req.query;
+  static validateDestination (req, res, next){
+    const { stop } = req.body;
+    let error;
 
-    if (!date || !stop) {
-      return next();
+    if(!stop) {
+      error.stop = 'Valid Date is required'
     }
-    const filteredRides
-        = rides.filter(ride =>
-          ride.date.toLowerCase() === date.toLowerCase()
-          && ride.stop.toLowerCase() === stop.toLowerCase());
 
-    res.status(200).json({
-      message: `Gotten all rides to ${stop} on ${date}`,
-      data: filteredRides
-    });
-  }
-
-  /**
-   * Get rides by date
-   *
-   * @static
-   * @param {object} req - The request object
-   * @param {object} res - The response object
-   * @param {function} next - The next middleware
-   * @return {object} Message and data of the rides
-   * @memberof RideMiddleware
-   */
-  static getByDate(req, res, next) {
-    const { date } = req.query;
-    if (!date) {
-      return next();
+    if(date.match(/w/g) !== date){
+      error.message = 'please input a valid location'
     }
-    const filteredRides = rides.filter(ride => ride.date === date);
 
-    res.status(200).send({
-      message: `Gotten ride(s) on ${date}`,
-      data: filteredRides
-    });
-  }
-
-  /**
-   * Get rides by destination
-   *
-   * @static
-   * @param {object} req - The request object
-   * @param {object} res - The response object
-   * @param {function} next - The next middleware
-   * @return {object} Message and data of the rides
-   * @memberof RideMiddleware
-   */
-  static getByDestination(req, res, next) {
-    const { stop } = req.query;
-    if (!stop) {
-      return next();
-    }
-    const filteredRides
-        = rides.filter(ride => ride.stop.toLowerCase() === stop.toLowerCase());
-
-    res.status(200).send({
-      message: `Gotten all ride(s) to ${stop}`,
-      data: filteredRides
-    });
+    if(!error) next();
+    res.status(400).json({ error });
   }
 }
-
-export default RideMiddleware;
