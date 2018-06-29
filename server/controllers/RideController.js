@@ -1,6 +1,6 @@
 import model from '../dummyModels/index';
 
-const { rides } = model;
+const { rides, requests } = model;
 
 /**
  * @class RideController
@@ -54,19 +54,32 @@ class RideController {
       }
     });
     if (gottenRide) {
+      requests.forEach((request) => {
+        if(request.driverID === gottenRide.driver.id) {
+          const { name, gender} = req.body;
+          request.request.push({
+            name,
+            gender,
+            reqStatus: 'pending'
+          })
+        }
+      });
       res.status(201).json({
         message: 'Ride request sent successfully!',
-        data: gottenRide
+        data: {
+          gottenRide,
+          request,
+        }
       });
     } else {
       res.status(404).json({
-        message: 'Ride request was unsuccessful'
+        message: `Ride with id of ${rideId} was unsuccessful`
       });
     }
   }
 
   /**
-   * get a ride offer
+   * get a specific ride offer
    *
    * @static
    * @param {object} req - The request object
@@ -74,7 +87,7 @@ class RideController {
    * @return {object} Message and ride data
    * @memberof RideController
    */
-  static getRide(req, res) {
+  static getSpecificRide(req, res) {
     const rideId = parseInt(req.params.rideId, 10);
     let gottenRide;
     rides.forEach((ride) => {
@@ -82,6 +95,7 @@ class RideController {
         gottenRide = ride;
       }
     });
+    if(!gottenRide) res.status(404).json({ message: `Ride with id of ${rideId} is not found`})
     res.status(200).json({
       message: 'Ride offer gotten successfully!',
       data: gottenRide
@@ -89,7 +103,7 @@ class RideController {
   }
 
   /**
-   * Get specific rides
+   * Get All rides
    *
    * @static
    * @param {object} req - The request object
@@ -101,7 +115,10 @@ class RideController {
   static getRides(req, res, next) {
     const { date, stop } = req.query;
     if (!date && !stop) {
-      return next();
+      res.status(200).json({
+        message: 'All rides gotten successfully',
+        data: rides
+      });
     }
     let filteredRides;
     if (date && stop) {
