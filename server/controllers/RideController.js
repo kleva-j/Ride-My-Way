@@ -21,6 +21,7 @@ class RideController {
     const {
       start, date, stop, driver
     } = req.body;
+    console.log(start)
     const newRide = {
       id: rides[rides.length - 1].id + 1,
       start,
@@ -47,6 +48,7 @@ class RideController {
    */
   static makeRequestToJoin(req, res) {
     const rideId = parseInt(req.params.rideId, 10);
+    console.log(rides)
     let gottenRide;
     rides.forEach((ride) => {
       if (ride.id === rideId) {
