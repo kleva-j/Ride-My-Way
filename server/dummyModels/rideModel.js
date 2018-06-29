@@ -4,20 +4,18 @@ const rides = [
     start: 'Yaba',
     stop: 'Oshodi',
     driver: {
-      firstname: 'Monoca',
-      lastname: 'Ada',
-      gender: 'female'
+      name: 'Monica Ada',
+      gender: 'female',
+      id: 101
     },
     date: '2018 - 07 - 21',
     pasengers: [
       {
-        firstname: 'Ayo',
-        lastname: 'Tolu',
+        name: 'Ayo Tolu',
         gender: 'male'
       },
       {
-        firstname: 'casandra',
-        lastname: 'Chuma',
+        name: 'casandra Chuma',
         gender: 'female'
       }
     ]
@@ -27,20 +25,18 @@ const rides = [
     start: 'Maryland',
     stop: 'Obanikoro',
     driver: {
-      firstname: 'casandra',
-      lastname: 'Chuma',
-      gender: 'female'
+      name: 'casandra Chuma',
+      gender: 'female',
+      id: 102
     },
     date: '2018 - 07 - 28',
     pasengers: [
       {
-        firstname: 'casandra',
-        lastname: 'Chuma',
+        name: 'casandra Chuma',
         gender: 'female'
       },
       {
-        firstname: 'Monoca',
-        lastname: 'Ada',
+        name: 'Monica Ada',
         gender: 'female'
       }
     ]
@@ -50,20 +46,18 @@ const rides = [
     start: 'Yaba',
     stop: 'Maryland',
     driver: {
-      firstname: 'Nelson',
-      lastname: 'kelechi',
-      gender: 'male'
+      name: 'Nelson kelechi',
+      gender: 'male',
+      id: 103
     },
     date: '2018 - 07 - 23',
     pasengers: [
       {
-        firstname: 'casandra',
-        lastname: 'Chuma',
+        name: 'casandra Chuma',
         gender: 'female'
       },
       {
-        firstname: 'Justin',
-        lastname: 'Osuji',
+        name: 'Justin Osuji',
         gender: 'male'
       }
     ]
