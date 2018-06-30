@@ -1,0 +1,49 @@
+{
+  "name": "ride-my-way",
+  "version": "1.0.0",
+  "description": "A carpooling application that provides drivers with the ability to create ride offers and passengers to join available ride offers.",
+  "main": "app.js",
+  "scripts": {
+    "test": "nyc mocha --require babel-core/register server/test/*.js",
+    "build": "npm run clean && babel server -d dist",
+    "clean": "rm -r dist && mkdir dist",
+    "start": "nodemon --exec babel-node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kleva-j/Ride-My-Way.git"
+  },
+  "keywords": [
+    "Ride-My-Way",
+    "Drivers",
+    "Passengers"
+  ],
+  "author": "Michael Obasi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kleva-j/Ride-My-Way/issues"
+  },
+  "homepage": "https://github.com/kleva-j/Ride-My-Way#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "coffeescript": "^2.3.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.16.3",
+    "lodash": "^4.17.10",
+    "nodemon": "^1.17.5",
+    "validator": "^10.4.0"
+  }
+}
