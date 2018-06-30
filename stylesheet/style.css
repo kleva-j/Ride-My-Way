@@ -1,0 +1,873 @@
+*{
+  padding: 0;
+  margin: 0;
+  font-family: basic;
+  box-sizing: border-box;
+}
+
+.body{
+  font-size: 16px;
+}
+
+.container{
+  scroll-behavior: smooth;
+}
+
+.burgar-nav{
+  float: right;
+  display: none;
+  cursor: pointer;
+  padding: 0 10px 10px;
+}
+
+.menu_wake{
+  content: "";
+  display: inline-block;
+  position: relative;
+  opacity: 1;
+  height: 3px;
+  width: 30px;
+  background-color: white;
+  transition: -webkit-transform 400ms ease;
+  transition: transform 400ms ease;
+  transition: transform 400ms ease -webkit-transform 400ms ease;
+}
+
+.menu_wake:before, .menu_wake:after{
+  content:"";
+  display: block;
+  position:absolute;
+  opacity: 1;
+  height: 3px;
+  width: 30px;
+  background-color: white;
+}
+
+.menu_wake:before{
+  top: 8px;
+  transition: opacity 400ms ease;
+}
+
+.menu_wake:after{
+  top:16px;
+  transition: -webkit-transform 400ms ease;
+  transition: transform 400ms ease;
+  transition: transform 400ms ease -webkit-transform 400ms ease;
+}
+
+.dropdown{
+  position: absolute;
+  border: 1px solid white;
+  display: block;
+  width: 90%;
+  text-align: center;
+  border-radius: 4px;
+  background: #46344E;
+}
+
+
+
+/********************
+LANDING PAGE - HEADER
+*********************/
+
+.nav-bar{
+  height: 50px;
+  display: flex;
+  font-weight: 700;
+  justify-content: space-between;
+}
+
+.logo{
+  font-size: 1.5rem;
+  color: white;
+  padding: 15px 18px;
+}
+
+.navigations{
+  display: flex;
+  align-items: center;
+}
+
+.active{
+  color: white
+}
+
+.join{
+  font-size: 1rem;
+  padding: 0 1em;
+}
+
+a{
+  color: rgb(210, 210, 210);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover{
+  color: white
+}
+
+.main{
+  background: linear-gradient(
+              to bottom right,
+              rgb(68, 51, 76, .6),
+              rgb(68, 51, 76, .8)),
+              url("../images/carpooling.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.central{
+  position: absolute;
+  font-size: 1rem;
+  width: 98%;
+  top: 5em;
+}
+
+h1{
+  font-family: montserrat;
+  font-weight: 800;
+  padding-top: 80px;
+  font-size: 45px;
+  color: rgba(255, 255, 255, 0.742);
+}
+
+h1 + p{
+  font-size: 1.3rem;
+  margin: 1.6em 0;
+  line-height: 34px;
+  font-weight: 900;
+  color: white;
+  word-wrap: break-word
+}
+
+.message {
+  position: absolute;
+  bottom: 80px;
+  width: 98%;
+}
+
+h3{
+  line-height: 50px;
+  color:rgb(240, 240, 240);
+  font-family: basic
+}
+
+input{
+  background: transparent;
+  border-bottom: 2px solid white;
+}
+
+input[type='text'], input[type='date'], input[type='password']{
+  padding:10px;
+  border: none;
+  border-bottom: 2px solid #dcdde1;
+  margin-right: 40px;
+  color: white;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(255, 255, 255, 0.742);
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(255, 255, 255, 0.742);
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(255, 255, 255, 0.742);
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: rgba(255, 255, 255, 0.742);
+}
+
+#button{
+  color: white;
+  border: 2px solid white;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 600
+}
+
+#button:hover{
+  color: #46344E;
+  background: white;
+}
+
+
+/*********************
+  LANDING PAGE - SECTION
+*********************/
+
+.description{
+  text-align: center;
+  background: rgb(249, 252, 255);
+}
+
+.details{
+  padding: 10px 0 30px;
+  background: rgba(255, 255, 255, 0.537)
+}
+
+.static{
+  font-size: 2rem;
+  margin: 50px 0;
+  font-family: tahoma;
+}
+
+.content{
+  color: black;
+  display: flex;
+  margin: 30px;
+  justify-content: space-around;
+}
+
+.info{
+  width: 30%;
+}
+
+.info > img{
+  height: 80px;
+}
+
+.data-info, .data-info + p{
+  color: rgba(0, 0, 0, 0.836)
+}
+
+.data-info + p{
+  font-family: basic;
+}
+
+
+/***  SECTION2 *****/
+.stats{
+  background: #94889b;
+  display: flex;
+  font-size: 1rem;
+}
+
+.count{
+  padding: 50px 0;
+  text-align: center;
+  margin: 50px auto;
+  max-width: 200px;
+
+}
+
+.numbers{
+  font-size: 50px;
+  font-stretch: condensed;
+  font-weight: 200
+}
+
+/*  SECTION3 */
+
+.certify{
+  text-align: center;
+  margin: 50px 0;
+}
+
+.heading{
+  padding: 50px 0;
+}
+
+e{
+  font-family: cursive;
+}
+
+.grid{
+  display: flex;
+  justify-content: space-around;
+  padding: 80px 0 50px;
+}
+
+.col{
+  width: 30%;
+}
+
+.col > .data-info + .discuss{
+  letter-spacing: 0px
+}
+
+
+/********
+  FOOTER
+*********/
+
+footer{
+  background: #46344E;
+  color: white;
+  color: rgba(255, 255, 255, 0.729)
+}
+
+#footer-top{
+  padding-top: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+
+span > a > img{
+  height: 25px;
+  padding: 0 2px;
+}
+
+.column > div > a{
+  color: rgba(0, 0, 0, 0.756);
+}
+
+#footer-bottom{
+  border-top: 1px solid black;
+  padding: 20px;
+  margin: 20px 20px 0
+}
+
+#copyright{
+  display: flex;
+  justify-content: center
+}
+
+#copyright > a{
+  margin: 0 5px 0 10px;
+  display: inline-block;
+  color: black;
+}
+
+#copyright > a:hover{
+  text-decoration: underline;
+  align-content: center
+}
+
+
+
+/*********************
+Sign in / Log in Page
+*********************/
+
+.login-form, .signin-form{
+  margin: 80px auto;
+  min-width: 300px;
+  max-width: 340px;
+  background: rgba(70, 52, 78, 0.537);
+  box-shadow: 0 0 2px 1px rgba(10, 10, 10, 0.456);
+}
+
+
+#log-form{
+  border-top: 1px solid orange;
+}
+
+input[name="firstname"],
+input[name="lastname"],
+input[name="email"],
+input[name="password"],
+input[name="confirm-password"]{
+  width: 80%;
+  margin: 1em auto;
+  box-sizing: border-box;
+}
+
+input[name="email"]{
+  padding: .8em .7em;
+}
+
+input[type="email"]{
+  border: none;
+  border-bottom: 2px solid #dcdde1;
+  color: white;
+}
+
+#login-button{
+  font-size: 1rem;
+  margin: 2em auto 1em;
+  display: block;
+  padding: .8em 5em;
+  border: 1px solid rgb(230, 230, 230);
+  border-radius: 3px;
+  color: rgba(230, 230, 230, 0.873);
+  color: #46344E;
+  cursor: pointer;
+  width: 80%;
+}
+
+#login-button:hover{
+  color: #46344E;
+  background: rgba(255, 255, 255, 0.756);
+}
+
+#options{
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1.6em;
+  color: rgba(0, 0, 0, 0.831);
+}
+
+#check{
+  height: .6rem
+}
+
+#check + h4{
+  font-size: .9rem;
+  display: inline-block;
+}
+
+.sign-in{
+  border-top: 1px solid orange;
+  width: 80%;
+  margin: 20px auto 0;
+  font-size: .9em
+}
+
+.sign-in > h3 > a{
+  color: rgb(199, 149, 57);
+}
+
+.sign-in > h3 > a:hover{
+  color: orange
+}
+/**********************
+Register / Sign up Page
+***********************/
+
+.signin-form{
+  margin: 50px auto;
+  min-width: 300px;
+  max-width: 400px;
+  padding-bottom: 2px
+}
+
+
+/**************
+  CATALOG PAGE
+***************/
+
+.search-head{
+  font-size: 1rem;
+  display: flex;
+  border: 2px solid #94889b;
+  justify-content: center;
+  padding: 1em 0 .6em;
+  width: 95%;
+  margin: 50px auto 30px;
+  border-radius: 3px;
+}
+
+input[type="search"]{
+  font-size: .8rem;
+  padding: .3em 1.1em;
+  border-radius: 1em;
+  color: rgba(255, 255, 255, 0.89);
+  margin-right: 2em
+}
+
+input[type="submit"]{
+  font-size: .8rem;
+  color: #46344E;
+  color: white;
+  padding: .25em 1em;
+  cursor: pointer;
+  border-radius: .4em;
+  font-weight: 600;
+  border: 2px solid white;
+}
+
+input[type="submit"]:hover{
+  background: white;
+  color:#46344E;
+}
+
+.search-head > form > input[type="time"]{
+  width: 90px;
+  margin-right: 20px;
+  padding: 0;
+}
+
+.list_rides{
+  font-size: 1rem;
+  border: 2px solid #94889b;
+  width: 80%;
+  margin: 1em auto;
+  border-radius: 3px;
+  padding: .4em 0;
+  overflow: auto;
+}
+
+.catalog{
+  height: 68vh;
+  text-align: left;
+  width: 95%;
+}
+
+.ride{
+  font-size: 1rem;
+  min-width: 12em;
+  padding: .5em;
+  margin: .5em .5em;
+  display: inline-block;
+  color:  black;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.811);
+  background: white;
+  list-style-type: none;
+}
+
+.connect{
+  font-size: 1rem;
+  margin: .4em auto;
+  text-align: center;
+  border: 1px solid #46344E;
+  padding: .4em;
+  max-width: 8em;
+  border-radius: 1em;
+  cursor: pointer;
+}
+
+.connect > a{
+  color: #46344E;
+}
+
+
+.connect:hover, .connect > a:hover{
+  background: rgba(222, 222, 222, 0.811);;
+}
+
+
+
+
+/**************
+  PROFILE PAGE
+***************/
+
+.display-tab{
+  font-size: 1rem;
+  margin: .5em auto;
+  height: 34em;
+  display: flex;
+  padding: 0;
+  background: none;
+  border: 0;
+}
+
+.side_panel, .main_panel{
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.891);
+  border-radius: 3px;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.side_panel{
+  min-width: 160px;
+  max-width: 13.75em;
+  margin-right: .4em;
+  flex-grow: 1;
+  text-align: start;
+}
+
+.nav{
+  padding: .5em 1em;
+  background: #46344E;
+  color: white;
+  border-top: 1px solid white;
+  cursor: pointer;
+}
+
+.main_panel{
+  flex-grow: 2;
+  min-width: 12em;
+  max-width: 39em;
+  text-align: start;
+  overflow: hidden;
+}
+
+.top-header, .top-panel{
+  height: 2.5em;
+  border-radius: .2em;
+}
+
+.resize{
+  display: none;
+}
+
+.detail{
+  padding: 2em;
+  background: rgba(70, 52, 78, 0.205);
+  text-align: center;
+}
+
+.profile-image > img{
+  height: 10em;
+  border-radius: 50%;
+  padding-bottom: 1em
+}
+
+.detail, .offer, .listings, listings2{
+  height: 93%;
+  overflow: auto
+}
+
+.add > p > a{
+  font-size: .8em
+}
+
+.add > p > a:hover{
+  color: #46344E
+}
+
+.listings{
+  width: 100%;
+  padding: 0 15px
+}
+
+.taken > h4{
+  margin: 15px auto 0;
+  text-decoration: underline;
+  width: 100%;
+  text-align: center
+}
+
+.ridelist{
+  display: flex;
+  width: 100%;
+  /* border-bottom: 1px solid #46344E; */
+  padding: 5px;
+  justify-content: space-around;
+  margin: 0;
+}
+
+/* .offer{
+  display: flex
+} */
+
+.ride_data{
+  display: flex;
+}
+.date, 
+.time, 
+.start, 
+.stop, 
+.passengers{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.ridelist h5{
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+
+
+
+/**************
+  CREATE OFFER
+***************/
+input[name="start"],
+input[name="stop"],
+input[type="number"],
+#ridebutton{
+  width: 80%;
+  margin: .9em auto;
+}
+
+#ridebutton{
+  margin-top: 2em;
+  padding: 1em 0;
+  border-radius: .3em;
+  color: rgba(255, 255, 255, 0.893);
+  font-weight: 600;
+  cursor: pointer
+}
+
+#ridebutton:hover{
+  color: #46344E;
+  background: white;
+}
+
+input[type="number"],
+input[type="time"]{
+  color: white;
+  padding: 1em 0;
+  border: none;
+  border-bottom: 2px solid white;
+}
+
+.box{
+  display: flex;
+  width: 80%;
+  margin:auto;
+}
+input[type="time"]{
+  width: 50%
+}
+
+
+
+
+/**************
+  RIDE DETAILS
+***************/
+.request{
+  border-top: 1px solid orange;
+  text-align: start;
+  padding: 30px;
+}
+.request > p{
+  color: rgba(255, 255, 255, 0.859);
+  padding: 10px 0;
+}
+.request > p > strong{
+  color: white;
+  padding: 0 3px;
+}
+
+#join_button{
+  border: 2px solid white;
+  padding: 9px 8px;
+  width: 150px;
+  text-align: center;
+  margin: 20px auto 0;
+  border-radius: 4px;
+  color:white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#join_button:hover{
+  color: #46344E;
+  background: white
+}
+
+
+
+/****************************
+          MEDIA QUERY
+*****************************/
+
+@media (max-width:440px){
+  .menu_wake, .menu_wake:before, .menu_wake:after{
+    height: 2px;
+    width: 25px;
+  }
+
+  .menu_wake:before{
+    top: 7px;
+  }
+
+  .menu_wake:after{
+    top: 14px;
+  }
+
+  .side_panel{
+    display: none
+  }
+
+  .top-header{
+    height: 4em
+  }
+
+  .resize  .nav, .resize > .top-panel{
+    border-right: 1px solid white;
+  }  
+
+  .resize{
+    display: flex;
+  }
+
+  .content{
+    display: block;
+  }
+
+  .info{
+    width: 100%;
+    margin: 30px 0
+  }
+
+  .grid{
+    padding: 0;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .col{
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  .message{
+    display: none;
+  }
+
+  .display-tab{
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px){
+  .display-tab{
+    width: 95%;
+  }
+
+  .nav-bar{
+    background: #46344E
+  }
+
+  .burgar-nav{
+    display: block;
+  }
+
+  .navigations{
+    display: none;
+    position: absolute;
+  }
+
+  .join{
+    padding: 4px;
+    margin: 0px auto;
+    border-bottom: 1px solid white;
+  }
+
+  /* View Rides*/
+  #search-from, #where-to, #time{
+    width: 90%;
+    margin: 5px auto;
+  }
+
+  .search-head{
+    margin-top: 5px;
+  }
+
+  #search{
+    width: 89%;
+    margin-top: 3px;
+    border-radius: 8px;
+  }
+
+  #data{
+    margin: 5px 0 0 70px;
+  }
+
+  .catalog{
+    display: inline-block;
+    height: 55vh;
+  }
+
+  #button{
+    margin-top: 20px
+  }
+  .count{
+    font-size: .5em
+  }
+  .count h4{
+    font-size: 1.5em;
+  }
+
+  .logo{
+    padding: 7px 18px;
+  }
+
+}
