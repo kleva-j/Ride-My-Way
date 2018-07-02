@@ -106,8 +106,8 @@ describe('RIDE CONTROLLER', () => {
         .end((err, res) => {
           expect(res.status).to.equal(400);
           expect(res.body).to.be.an('object');
-          expect(res.body.start.length)
-            .to.include('The Location should be between 3 to 20 characters');
+          expect(res.body.start)
+            .to.include({length: 'Please enter a valid length of Destination'});
             done();
         });
     });
@@ -157,10 +157,3 @@ describe('RIDE CONTROLLER', () => {
     // });
   });
 });
-
-describe('should Just Say Hi', () => {
-  it('should return true', (done) => {
-    expect(2).to.equal(2)
-    done();
-  });
-})

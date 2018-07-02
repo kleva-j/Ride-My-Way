@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api/v1', rideRouter);
 app.use('/api/v1/auth', userRouter);
+// app.use('api/v1/users')
 
 app.get('/', (req, res) => {
   res.status(200).send('Welcome to Ride-My-Way Api');

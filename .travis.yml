@@ -10,5 +10,5 @@ node_js:
 env:
   global:
     - CC_TEST_REPORTER_ID=60d2e3d3908a8dd4f8758139083b1f1fb88cd8e4ff6132aa7a4c7b70a209296d
-script:
-  - npm test
+# script:
+#   - npm test: "nyc --reporter=html --reporter=text mocha"

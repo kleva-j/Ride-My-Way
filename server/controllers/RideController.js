@@ -1,6 +1,6 @@
 import model from '../dummyModels/index';
 
-const { rides, requests } = model;
+const { rides, requestModel } = model;
 
 /**
  * @class RideController
@@ -21,7 +21,6 @@ class RideController {
     const {
       start, date, stop, driver
     } = req.body;
-    console.log(start)
     const newRide = {
       id: rides[rides.length - 1].id + 1,
       start,
@@ -48,7 +47,6 @@ class RideController {
    */
   static makeRequestToJoin(req, res) {
     const rideId = parseInt(req.params.rideId, 10);
-    console.log(rides)
     let gottenRide;
     rides.forEach((ride) => {
       if (ride.id === rideId) {
@@ -56,26 +54,25 @@ class RideController {
       }
     });
     if (gottenRide) {
-      requests.forEach((request) => {
+      requestModel.forEach((request) => {
         if(request.driverID === gottenRide.driver.id) {
           const { name, gender} = req.body;
           request.request.push({
             name,
             gender,
             reqStatus: 'pending'
-          })
+          });
+          console.log(requestModel)
         }
       });
       res.status(201).json({
         message: 'Ride request sent successfully!',
         data: {
-          gottenRide,
-          request,
         }
       });
     } else {
       res.status(404).json({
-        message: `Ride with id of ${rideId} was unsuccessful`
+        message: `Ride with id of ${rideId} was not found`
       });
     }
   }

@@ -13,9 +13,8 @@ class RideValidator {
    */
   static validateInput (req, res, next){
     const { start, date, stop, driver } = req.body;
-    let formatedDate = date.split('-').join(',');
     let error = {};
-    
+
     //start
     if(!start) {
       error.start = 'A Location is required';
@@ -34,8 +33,11 @@ class RideValidator {
       error.date = 'A Date is required'
     }
 
-    if((/[a-z]/g).test(formatedDate)){
-      error.date = 'Please input a valid date'
+    if(date){
+      let formatedDate = date.split('-').join(',');
+      if((/[a-z]/g).test(formatedDate)){
+        error.date = 'Please input a valid date'
+      }
     }
 
     //stop
@@ -60,11 +62,11 @@ class RideValidator {
       error.driver = `Valid 'NAME', 'GENDER', and 'ID' are required`
     }
 
-    const isEmpty = (obj) => { 
-      for (var x in obj) { return false; }
+    const isEmpty = (obj) => {
+      for (var prop in obj) { return false; }
       return true;
     }
-    
+
     if(isEmpty(error)) next()
     res.status(400).json({ error });
   }
@@ -82,6 +84,7 @@ class RideValidator {
     if(isNaN(rideId)) res.status(400).json({
       message: 'Please enter a valid numbers'
     })
+    console.log(rideId)
     next();
   }
 

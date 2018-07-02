@@ -1,6 +1,5 @@
-import { isEmpty } from 'lodash';
-import Validator from 'validator';
-
+import Validator from './authenticate';
+const {isEmpty} = Validator;
 /**
  * @class Auth
  * @classdesc Authenticates user input
@@ -20,6 +19,7 @@ class Auth {
     const { email, password } = req.body;
     const error = {};
 
+    //validate password
     if (!password) {
       error.password = 'Password is required';
     }
@@ -28,6 +28,7 @@ class Auth {
       error.password = 'Password is required';
     }
 
+    //validate password
     if (!email) {
       error.email = 'Email is required';
     }
@@ -36,8 +37,9 @@ class Auth {
       error.email = 'Please provide a valid email address';
     }
 
-    if (isEmpty(error)) return next();
-    return res.status(400).json({ error });
+    if (isEmpty(error)) {
+      next();
+    } else res.status(400).json({ error });
   }
 
   /**
@@ -57,21 +59,19 @@ class Auth {
     const error = {};
 
     if (!firstname) {
-      error.firstname = 'Firstname is required';
+      error.firstname = 'A Firstname is required';
     }
 
     if (!lastname) {
-      error.lastname = 'Lastname is required';
+      error.lastname = 'A Lastname is required';
     }
 
-    
-
     if (!username) {
-      error.username = 'Username is required';
+      error.username = 'A Username is required';
     }
 
     if (username && Validator.isEmpty(username.trim() || '')) {
-      error.username = 'Username is required';
+      error.username = 'A Username is required';
     }
 
     if (!password) {
@@ -89,7 +89,7 @@ class Auth {
     }
 
     if (!email) {
-      error.email = 'Email is required';
+      error.email = 'An Email Address is required';
     }
 
     if (email && !Validator.isEmail(email.trim() || '')) {
@@ -124,7 +124,7 @@ class Auth {
         });
     }
     // Check for Username Lenght
-    if (!Validator.isLength(username, { min: 3, max: 15 })) {
+    if (!Validator.isLength(username, { min: 4, max: 15 })) {
       return res.status(406)
         .send({
           status: 'Fail',
