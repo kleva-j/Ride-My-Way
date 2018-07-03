@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 // import { isEmpty } from 'lodash';
 // import Validator from 'validator';
 
+=======
+import Validator from './authenticate';
+const {isEmpty} = Validator;
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
 /**
  * @class Auth
  * @classdesc Authenticates user input
@@ -20,6 +25,10 @@ class Auth {
     const { email, password } = req.body;
     const error = {};
 
+<<<<<<< HEAD
+=======
+    //validate password
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
     if (!password) {
       error.password = 'Password is required';
     }
@@ -28,6 +37,10 @@ class Auth {
       error.password = 'Password is required';
     }
 
+<<<<<<< HEAD
+=======
+    //validate password
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
     if (!email) {
       error.email = 'Email is required';
     }
@@ -36,8 +49,14 @@ class Auth {
       error.email = 'Please provide a valid email address';
     }
 
+<<<<<<< HEAD
     if (isEmpty(error)) return next();
     return res.status(400).json({ error });
+=======
+    if (isEmpty(error)) {
+      next();
+    } else res.status(400).json({ error });
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
   }
 
   /**
@@ -52,6 +71,7 @@ class Auth {
    */
   static AuthSignUp(req, res, next) {
     const {
+<<<<<<< HEAD
       username, email, password, confirmPassword
     } = req.body;
     const error = {};
@@ -62,6 +82,26 @@ class Auth {
 
     if (username && Validator.isEmpty(username.trim() || '')) {
       error.username = 'Username is required';
+=======
+      firstname, lastname, username, email, password, confirmPassword
+    } = req.body;
+    const error = {};
+
+    if (!firstname) {
+      error.firstname = 'A Firstname is required';
+    }
+
+    if (!lastname) {
+      error.lastname = 'A Lastname is required';
+    }
+
+    if (!username) {
+      error.username = 'A Username is required';
+    }
+
+    if (username && Validator.isEmpty(username.trim() || '')) {
+      error.username = 'A Username is required';
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
     }
 
     if (!password) {
@@ -75,11 +115,19 @@ class Auth {
     if (Validator.isEmpty(password || '') ||
       Validator.isEmpty(confirmPassword || '') ||
       (confirmPassword.trim() !== password.trim())) {
+<<<<<<< HEAD
       error.password = 'Passwords do not match or empty';
     }
 
     if (!email) {
       error.email = 'Email is required';
+=======
+      error.password = 'Passwords field is empty';
+    }
+
+    if (!email) {
+      error.email = 'An Email Address is required';
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
     }
 
     if (email && !Validator.isEmail(email.trim() || '')) {
@@ -114,7 +162,11 @@ class Auth {
         });
     }
     // Check for Username Lenght
+<<<<<<< HEAD
     if (!Validator.isLength(username, { min: 3, max: 15 })) {
+=======
+    if (!Validator.isLength(username, { min: 4, max: 15 })) {
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
       return res.status(406)
         .send({
           status: 'Fail',

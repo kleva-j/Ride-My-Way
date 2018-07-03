@@ -5,7 +5,12 @@ const users = [
     lastname: 'Ada',
     email: 'Monica@ada.com',
     gender: 'female',
+<<<<<<< HEAD
     password: 'monicada'
+=======
+    password: 'monicada',
+    driverID: 50
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
   },
   {
     id: 102,
@@ -13,7 +18,12 @@ const users = [
     lastname: 'Chuma',
     email: 'casa@dra.com',
     gender: 'female',
+<<<<<<< HEAD
     password: 'and#show'
+=======
+    password: 'and#show',
+    driverID: 50
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
   },
   {
     id: 103,
@@ -21,7 +31,12 @@ const users = [
     lastname: 'Kelechi',
     email: 'osuji@kelechi.com',
     gender: 'male',
+<<<<<<< HEAD
     password: 'anima@c#lay'
+=======
+    password: 'anima@c#lay',
+    driverID: 50
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
   },
   {
     id: 104,
@@ -29,7 +44,12 @@ const users = [
     lastname: 'bezos',
     email: 'jeff@bezos.com',
     gender: 'male',
+<<<<<<< HEAD
     password: 'jeffbezos'
+=======
+    password: 'jeffbezos',
+    driverID: 50
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
   },
   {
     id: 105,
@@ -37,7 +57,12 @@ const users = [
     lastname: 'Sindy',
     email: 'brown@sindy.com',
     gender: 'male',
+<<<<<<< HEAD
     password: 'brownsindy'
+=======
+    password: 'brownsindy',
+    driverID: 50
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
   }
 ];
 

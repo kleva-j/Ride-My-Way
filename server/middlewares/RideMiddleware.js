@@ -13,40 +13,47 @@ class RideValidator {
    */
   static validateInput (req, res, next){
     const { start, date, stop, driver } = req.body;
-    let date = date.split('-').join(',');
-    let error;
+    let error = {};
 
+    //start
     if(!start) {
-      error.start = 'A Location is required'
+      error.start = 'A Location is required';
     }
 
-    if(start.match(/w/g) !== date){
-      error.stop = 'please input a valid destination'
+    if((/[1-9]/g).test(start)){
+      error.start = 'please input a valid Location'
     }
 
     if(start && start.length < 3){
-      error.start.length = 'Please enter a valid input length is required'
+      error.start = {length: 'The Location should be between 3 to 20 characters'}
     }
 
+    //date
     if(!date) {
       error.date = 'A Date is required'
     }
 
-    if(!(/[a-z]/g).test(stat)){
-      error.date = 'Please input a valid date'
+    if(date){
+      let formatedDate = date.split('-').join(',');
+      if((/[a-z]/g).test(formatedDate)){
+        error.date = 'Please input a valid date'
+      }
     }
 
+    //stop
     if(!stop) {
       error.stop = 'A Destination is required'
     }
 
-    if(stop.match(/w/g) !== date){
-      error.stop = 'please input a valid destination'
-    }
-    if(stop && stop.length < 3){
-      error.stop.length = 'Please enter a valid input length is required'
+    if((/\W/g).test(stop)){
+      error.stop = 'please input a valid Destination'
     }
 
+    if(stop && stop.length < 3){
+      error.stop = {length: 'Please enter a valid length of Destination'}
+    }
+
+    //driver
     if(!driver) {
       error.driver = `Driver's details are required`
     }

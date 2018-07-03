@@ -1,6 +1,10 @@
 import model from '../dummyModels/index';
 
+<<<<<<< HEAD
 const { rides, requests } = model;
+=======
+const { rides, requestModel } = model;
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
 
 /**
  * @class RideController
@@ -54,26 +58,42 @@ class RideController {
       }
     });
     if (gottenRide) {
+<<<<<<< HEAD
       requests.forEach((request) => {
+=======
+      requestModel.forEach((request) => {
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
         if(request.driverID === gottenRide.driver.id) {
           const { name, gender} = req.body;
           request.request.push({
             name,
             gender,
             reqStatus: 'pending'
+<<<<<<< HEAD
           })
+=======
+          });
+          console.log(requestModel)
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
         }
       });
       res.status(201).json({
         message: 'Ride request sent successfully!',
         data: {
+<<<<<<< HEAD
           gottenRide,
           request,
+=======
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
         }
       });
     } else {
       res.status(404).json({
+<<<<<<< HEAD
         message: `Ride with id of ${rideId} was unsuccessful`
+=======
+        message: `Ride with id of ${rideId} was not found`
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
       });
     }
   }

@@ -1,6 +1,10 @@
 const requestModel = [
     {
+<<<<<<< HEAD
       driverID: 101,
+=======
+      driverID: 50,
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
       request: [
         {
           name: 'Andrew Samuel',
@@ -10,7 +14,11 @@ const requestModel = [
       ]
     },
     {
+<<<<<<< HEAD
       driverID: 102,
+=======
+      driverID: 51,
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
       request: [
         {
           name: 'Andrew Samuel',
@@ -20,7 +28,11 @@ const requestModel = [
       ]
     },
     {
+<<<<<<< HEAD
       driverID: 103,
+=======
+      driverID: 52,
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
       request: [
         {
           name: 'Andrew Samuel',
@@ -30,7 +42,11 @@ const requestModel = [
       ]
     },
     {
+<<<<<<< HEAD
       driverID: 104,
+=======
+      driverID: 53,
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
       request: [
         {
           name: 'Andrew Samuel',
@@ -40,7 +56,11 @@ const requestModel = [
       ]
     },
     {
+<<<<<<< HEAD
       driverID: 105,
+=======
+      driverID: 54,
+>>>>>>> Bug-158731382-fix-travis-and-coveralls
       request: [
         {
           name: 'Andrew Samuel',
