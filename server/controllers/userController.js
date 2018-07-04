@@ -21,31 +21,36 @@ class userController {
    */
   static RegisterUser(req, res) {
     const {
-      firstname, lastname, username, email, password
+      userid, firstname, lastname, username, email, password
     } = req.body;
     const hashPassword = SHA256(password).toString();
 
-    // const text = 'INSERT INTO users(firstname, lastname, username, email, password, hashpassword) VALUES($1, $2, $3, $4, $5, $6)  RETURNING *';
-    // const values = [firstname, lastname, username, email, password, hashPassword];
+    const text = 'INSERT INTO users( userid, firstname, lastname, username, email, password, hashpassword) VALUES($1, $2, $3, $4, $5, $6, $7)  RETURNING *';
+    const values = [userid, firstname, lastname, username, email, password, hashPassword];
 
-    // pool.query(text, values, (err, resp) => {
-    //   if (err) return err.stack;
-
-    //   res.status(201).json({
-    //     message: 'Signed in successfully!',
-    //     data: resp.rows[0]
-    //   });
-    // });
-    pool.connect()
-      .then(client => client.query('SELECT * FROM users WHERE id = $1', [1])
-        .then((res) => {
-          client.release();
-          console.log(res.rows[0]);
-        })
-        .catch((e) => {
-          client.release();
-          console.log(err.stack);
-        }));
+    pool.query(text, values, (err, resp) => {
+      console.log('i am here');
+      if (err) {
+        console.log('An error occurred');
+        return err.stack;
+      }
+      if (resp) {
+        res.status(201).json({
+          message: 'Signed in successfully!',
+          data: resp.rows[0]
+        });
+      }
+    });
+    // pool.connect()
+    //   .then(client => client.query('SELECT * FROM users WHERE id = $1', [1])
+    //     .then((res) => {
+    //       client.release();
+    //       console.log(res.rows[0]);
+    //     })
+    //     .catch((e) => {
+    //       client.release();
+    //       console.log(err.stack);
+    //     }));
   }
 
   /**
