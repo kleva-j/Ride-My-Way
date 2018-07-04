@@ -1,7 +1,8 @@
-import model from '../dummyModels/index';
+// import model from '../dummyModels/index';
 import SHA256 from 'crypto-js/sha256';
+import pool from '../db/dbpool';
 
-const { users } = model;
+// const { users } = model;
 
 /**
  * @class userController
@@ -19,23 +20,32 @@ class userController {
    * @memberof userController
    */
   static RegisterUser(req, res) {
-    const hashPassword = SHA256(req.body.password).toString();
     const {
-      firstname, lastname, username, email
+      firstname, lastname, username, email, password
     } = req.body;
-    const newUser = {
-      id: users[users.length - 1].id + 1,
-      firstname,
-      lastname,
-      username,
-      email,
-      password: hashPassword
-    };
-    users.push(newUser);
-    res.status(201).json({
-      message: 'Signed in successfully!',
-      data: users[users.length - 1]
-    });
+    const hashPassword = SHA256(password).toString();
+
+    // const text = 'INSERT INTO users(firstname, lastname, username, email, password, hashpassword) VALUES($1, $2, $3, $4, $5, $6)  RETURNING *';
+    // const values = [firstname, lastname, username, email, password, hashPassword];
+
+    // pool.query(text, values, (err, resp) => {
+    //   if (err) return err.stack;
+
+    //   res.status(201).json({
+    //     message: 'Signed in successfully!',
+    //     data: resp.rows[0]
+    //   });
+    // });
+    pool.connect()
+      .then(client => client.query('SELECT * FROM users WHERE id = $1', [1])
+        .then((res) => {
+          client.release();
+          console.log(res.rows[0]);
+        })
+        .catch((e) => {
+          client.release();
+          console.log(err.stack);
+        }));
   }
 
   /**
@@ -48,7 +58,8 @@ class userController {
    * @memberof userController
    */
   static SignInUser(req, res) {
-    const { email, password } = req.body;
+    // const { email, password } = req.body;
+
     res.status(202).json({
       message: 'User signed in successfully'
     });

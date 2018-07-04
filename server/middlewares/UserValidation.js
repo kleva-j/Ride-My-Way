@@ -1,6 +1,3 @@
-// import { isEmpty } from 'lodash';
-// import Validator from 'validator';
-
 /**
  * @class Auth
  * @classdesc Authenticates user input
