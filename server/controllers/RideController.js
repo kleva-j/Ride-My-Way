@@ -1,6 +1,6 @@
 import model from '../dummyModels/index';
 
-const { rides, requests } = model;
+const { rides, requestModel } = model;
 
 /**
  * @class RideController
@@ -54,26 +54,25 @@ class RideController {
       }
     });
     if (gottenRide) {
-      requests.forEach((request) => {
+      requestModel.forEach((request) => {
         if(request.driverID === gottenRide.driver.id) {
           const { name, gender} = req.body;
           request.request.push({
             name,
             gender,
             reqStatus: 'pending'
-          })
+          });
+          console.log(requestModel)
         }
       });
       res.status(201).json({
         message: 'Ride request sent successfully!',
         data: {
-          gottenRide,
-          request,
         }
       });
     } else {
       res.status(404).json({
-        message: `Ride with id of ${rideId} was unsuccessful`
+        message: `Ride with id of ${rideId} was not found`
       });
     }
   }

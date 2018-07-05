@@ -21,25 +21,30 @@ class userController {
    */
   static RegisterUser(req, res) {
     const {
-      userid, firstname, lastname, username, email, password
+      firstname, lastname, username, email, password
     } = req.body;
-    const hashPassword = SHA256(password).toString();
 
-    const text = 'INSERT INTO users( userid, firstname, lastname, username, email, password, hashpassword) VALUES($1, $2, $3, $4, $5, $6, $7)  RETURNING *';
-    const values = [userid, firstname, lastname, username, email, password, hashPassword];
-
-    pool.query(text, values, (err, resp) => {
-      console.log('i am here');
-      if (err) {
-        console.log('An error occurred');
-        return err.stack;
+    users.forEach(user => {
+      if(user.email = email) {
+        return re.status().json({
+          message: `User already exist with the email address of ${email}`
+        })
       }
-      if (resp) {
-        res.status(201).json({
-          message: 'Signed in successfully!',
-          data: resp.rows[0]
-        });
-      }
+    })
+    const hashPassword = SHA256(req.body.password).toString();
+    const newUser = {
+      id: users[users.length - 1].id + 1,
+      firstname,
+      lastname,
+      username,
+      email,
+      password,
+      hashPassword
+    };
+    users.push(newUser);
+    res.status(201).json({
+      message: 'Signed up successfully!',
+      data: users[users.length - 1]
     });
     // pool.connect()
     //   .then(client => client.query('SELECT * FROM users WHERE id = $1', [1])
@@ -63,12 +68,27 @@ class userController {
    * @memberof userController
    */
   static SignInUser(req, res) {
-    // const { email, password } = req.body;
+    const { email, password } = req.body;
+    let logUser;
+      users.forEach((user) => {
+        if(user.email === email && user.password === password) {
+          logUser = user;
+        }
+      });
 
-    res.status(202).json({
-      message: 'User signed in successfully'
-    });
-  }
+      if(logUser) {
+        res.status(202).json({
+          message: 'User signed in successfully',
+          data: logUser
+        });
+      }
+      else {
+        res.status(404).json({
+          status: 'fail',
+          message: 'Incorrect Email or password'
+        });
+      }
+    }
 }
 
 export default userController;
