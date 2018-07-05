@@ -11,6 +11,6 @@ const userRouter = express.Router();
 userRouter.route('/login')
   .post(AuthLogin, SignInUser);
 userRouter.route('/signup')
-  .post(AuthInputLength, AuthSignUp, RegisterUser);
+  .post(RegisterUser);
 
 export default userRouter;
