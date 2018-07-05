@@ -49,10 +49,18 @@ class Auth {
    */
   static AuthSignUp(req, res, next) {
     const {
-      username, email, password, confirmPassword
+      firstname, lastname, username, email, password, confirmPassword
     } = req.body;
     const error = {};
 
+    if (!firstname) {
+      error.firstname = 'Firstname is required';
+    }
+
+    if (!lastname) {
+      error.lastname = 'Lastname is required';
+    }
+    
     if (!username) {
       error.username = 'Username is required';
     }
@@ -72,7 +80,7 @@ class Auth {
     if (Validator.isEmpty(password || '') ||
       Validator.isEmpty(confirmPassword || '') ||
       (confirmPassword.trim() !== password.trim())) {
-      error.password = 'Passwords do not match or empty';
+      error.password = 'Passwords field is empty';
     }
 
     if (!email) {

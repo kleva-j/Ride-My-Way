@@ -5,7 +5,8 @@ const users = [
     lastname: 'Ada',
     email: 'Monica@ada.com',
     gender: 'female',
-    password: 'monicada'
+    password: 'monicada',
+    driverID: 50
   },
   {
     id: 102,
@@ -13,7 +14,8 @@ const users = [
     lastname: 'Chuma',
     email: 'casa@dra.com',
     gender: 'female',
-    password: 'and#show'
+    password: 'and#show',
+    driverID: 50
   },
   {
     id: 103,
@@ -21,7 +23,8 @@ const users = [
     lastname: 'Kelechi',
     email: 'osuji@kelechi.com',
     gender: 'male',
-    password: 'anima@c#lay'
+    password: 'anima@c#lay',
+    driverID: 50
   },
   {
     id: 104,
@@ -29,7 +32,8 @@ const users = [
     lastname: 'bezos',
     email: 'jeff@bezos.com',
     gender: 'male',
-    password: 'jeffbezos'
+    password: 'jeffbezos',
+    driverID: 50
   },
   {
     id: 105,
@@ -37,7 +41,8 @@ const users = [
     lastname: 'Sindy',
     email: 'brown@sindy.com',
     gender: 'male',
-    password: 'brownsindy'
+    password: 'brownsindy',
+    driverID: 50
   }
 ];
 

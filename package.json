@@ -4,7 +4,7 @@
   "description": "A carpooling application that provides drivers with the ability to create ride offers and passengers to join available ride offers.",
   "main": "app.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register server/test/*.js",
+    "test": "nyc mocha --require babel-core/register server/test/*.js",
     "build": "npm run clean && babel server -d dist",
     "clean": "rm -r dist && mkdir dist",
     "start": "nodemon --exec babel-node app.js"
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/kleva-j/Ride-My-Way.git"
   },
   "keywords": [
-    "Ridw-My-Way",
+    "Ride-My-Way",
     "Drivers",
     "Passengers"
   ],
@@ -31,11 +31,14 @@
     "babel-preset-stage-2": "^6.24.1",
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
+    "coffeescript": "^2.3.1",
     "coveralls": "^3.0.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.12.0",
     "istanbul": "^0.4.5",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2"
     "mocha": "^5.2.0"
   },
   "dependencies": {
