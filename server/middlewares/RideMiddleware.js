@@ -11,53 +11,62 @@ class RideValidator {
    * @param {function} next - The next middleware
    * @memberof RideValidator
    */
-  static validateInput(req, res, next) {
-    const {
-      start, date, stop, driver
-    } = req.body;
-    const formatedDate = date.split('-').join(',');
-    let error;
+  static validateInput (req, res, next){
+    const { start, date, stop, driver } = req.body;
+    let error = {};
 
-    if (!start) {
+    //start
+    if(!start) {
       error.start = 'A Location is required';
     }
 
-    if (start.match(/w/g) !== stop) {
-      error.stop = 'please input a valid destination';
+    if((/[1-9]/g).test(start)){
+      error.start = 'please input a valid Location'
     }
 
-    if (start && start.length < 3) {
-      error.start.length = 'Please enter a valid input length is required';
+    if(start && start.length < 3){
+      error.start = {length: 'The Location should be between 3 to 20 characters'}
     }
 
-    if (!date) {
-      error.date = 'A Date is required';
+    //date
+    if(!date) {
+      error.date = 'A Date is required'
     }
 
-    if (!(/[a-z]/g).test(formatedDate)) {
-      error.date = 'Please input a valid date';
+    if(date){
+      let formatedDate = date.split('-').join(',');
+      if((/[a-z]/g).test(formatedDate)){
+        error.date = 'Please input a valid date'
+      }
     }
 
-    if (!stop) {
-      error.stop = 'A Destination is required';
+    //stop
+    if(!stop) {
+      error.stop = 'A Destination is required'
     }
 
-    if (stop.match(/w/g) !== date) {
-      error.stop = 'please input a valid destination';
-    }
-    if (stop && stop.length < 3) {
-      error.stop.length = 'Please enter a valid input length is required';
+    if((/\W/g).test(stop)){
+      error.stop = 'please input a valid Destination'
     }
 
-    if (!driver) {
-      error.driver = 'Driver\'s details are required';
+    if(stop && stop.length < 3){
+      error.stop = {length: 'Please enter a valid length of Destination'}
+    }
+
+    //driver
+    if(!driver) {
+      error.driver = `Driver's details are required`
     }
     const { name, gender, id } = req.body;
     if (name && gender && id) {
       error.driver = 'Valid \'NAME\', \'GENDER\', and \'ID\' are required';
     }
+    const isEmpty = (obj) => {
+      for (var prop in obj) { return false; }
+      return true;
+    }
 
-    if (!error) next();
+    if(isEmpty(error)) next()
     res.status(400).json({ error });
   }
 
