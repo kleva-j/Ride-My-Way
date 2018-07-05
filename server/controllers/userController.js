@@ -24,38 +24,25 @@ class userController {
       firstname, lastname, username, email, password
     } = req.body;
 
-    users.forEach(user => {
-      if(user.email = email) {
-        return re.status().json({
-          message: `User already exist with the email address of ${email}`
-        })
-      }
-    })
     const hashPassword = SHA256(req.body.password).toString();
-    const newUser = {
-      id: users[users.length - 1].id + 1,
-      firstname,
-      lastname,
-      username,
-      email,
-      password,
-      hashPassword
-    };
-    users.push(newUser);
-    res.status(201).json({
-      message: 'Signed up successfully!',
-      data: users[users.length - 1]
-    });
-    // pool.connect()
-    //   .then(client => client.query('SELECT * FROM users WHERE id = $1', [1])
-    //     .then((res) => {
-    //       client.release();
-    //       console.log(res.rows[0]);
-    //     })
-    //     .catch((e) => {
-    //       client.release();
-    //       console.log(err.stack);
-    //     }));
+
+    pool.connect(connect, ( err, client, done ) => {
+      if(err) {
+        return console.error('error fetching client from pool');
+      }
+      client.query('SELECT * FROM users', (err, response) => {
+        done();
+        if (err) {
+          return console.error('error running query', err);
+        }
+
+        res.status(200).json({
+          data: response.rows
+        })
+
+        done()
+      })
+    })
   }
 
   /**
