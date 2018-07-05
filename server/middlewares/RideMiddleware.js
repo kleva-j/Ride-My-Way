@@ -55,36 +55,40 @@ class RideValidator {
     if(!driver) {
       error.driver = `Driver's details are required`
     }
+    
     const { name, gender, id } = req.body;
-    if( name && gender && id ) {
-      error.driver = `Valid 'NAME', 'GENDER', and 'ID' are required`
+    if (name && gender && id) {
+      error.driver = 'Valid \'NAME\', \'GENDER\', and \'ID\' are required';
     }
-
+    
     const isEmpty = (obj) => { 
       for (var x in obj) { return false; }
       return true;
     }
     
     if(isEmpty(error)) next()
+
     res.status(400).json({ error });
   }
 
   /**
-   *  validate id
+   *  Validate Id
    * @static
    * @param {object} req - The request object
    * @param {object} res - The response object
    * @param {function} next - The next middleware
+   * @returns {object}
    * @memberof RideValidator
    */
-  static validateID (req, res, next) {
+  static validateID(req, res, next) {
     const rideId = parseInt(req.params.rideId, 10);
-    if(isNaN(rideId)) res.status(400).json({
-      message: 'Please enter a valid numbers'
-    })
+    if (isNaN(rideId)) {
+      res.status(400).json({
+        message: 'Please enter a valid numbers'
+      });
+    }
     next();
   }
-
 }
 
 export default RideValidator;

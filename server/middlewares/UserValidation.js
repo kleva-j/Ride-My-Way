@@ -1,6 +1,3 @@
-import { isEmpty } from 'lodash';
-import Validator from 'validator';
-
 /**
  * @class Auth
  * @classdesc Authenticates user input
@@ -63,9 +60,7 @@ class Auth {
     if (!lastname) {
       error.lastname = 'Lastname is required';
     }
-
     
-
     if (!username) {
       error.username = 'Username is required';
     }
