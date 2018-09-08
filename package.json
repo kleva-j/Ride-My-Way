@@ -4,11 +4,7 @@
   "description": "A carpooling application that provides drivers with the ability to create ride offers and passengers to join available ride offers.",
   "main": "app.js",
   "scripts": {
-<<<<<<< HEAD
-    "test": "mocha --compilers js:babel-core/register server/test/*.js",
-=======
     "test": "nyc mocha --require babel-core/register server/test/*.js",
->>>>>>> Bug-158731382-fix-travis-and-coveralls
     "build": "npm run clean && babel server -d dist",
     "clean": "rm -r dist && mkdir dist",
     "start": "nodemon --exec babel-node app.js"
@@ -18,11 +14,7 @@
     "url": "git+https://github.com/kleva-j/Ride-My-Way.git"
   },
   "keywords": [
-<<<<<<< HEAD
-    "Ridw-My-Way",
-=======
     "Ride-My-Way",
->>>>>>> Bug-158731382-fix-travis-and-coveralls
     "Drivers",
     "Passengers"
   ],
@@ -38,12 +30,6 @@
     "babel-preset-es2015": "^6.24.1",
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
-<<<<<<< HEAD
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.12.0",
-    "mocha": "^5.2.0"
-=======
     "coffeescript": "^2.3.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
@@ -51,7 +37,6 @@
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "nyc": "^12.0.2"
->>>>>>> Bug-158731382-fix-travis-and-coveralls
   },
   "dependencies": {
     "body-parser": "^1.18.3",
