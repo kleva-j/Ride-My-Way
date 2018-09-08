@@ -1,3 +1,4 @@
+
 import model from '../dummyModels/index';
 import SHA256 from 'crypto-js/sha256';
 
@@ -19,12 +20,6 @@ class userController {
    * @memberof userController
    */
   static RegisterUser(req, res) {
-<<<<<<< HEAD
-    const hashPassword = SHA256(req.body.password).toString();
-    const {
-      firstname, lastname, username, email
-    } = req.body;
-=======
     const {
       firstname, lastname, username, email, password
     } = req.body;
@@ -37,27 +32,17 @@ class userController {
       }
     })
     const hashPassword = SHA256(req.body.password).toString();
->>>>>>> Bug-158731382-fix-travis-and-coveralls
     const newUser = {
       id: users[users.length - 1].id + 1,
       firstname,
       lastname,
       username,
       email,
-<<<<<<< HEAD
       password: hashPassword
     };
     users.push(newUser);
     res.status(201).json({
       message: 'Signed in successfully!',
-=======
-      password,
-      hashPassword
-    };
-    users.push(newUser);
-    res.status(201).json({
-      message: 'Signed up successfully!',
->>>>>>> Bug-158731382-fix-travis-and-coveralls
       data: users[users.length - 1]
     });
   }
@@ -73,12 +58,6 @@ class userController {
    */
   static SignInUser(req, res) {
     const { email, password } = req.body;
-<<<<<<< HEAD
-    res.status(202).json({
-      message: 'User signed in successfully'
-    });
-  }
-=======
     let logUser;
       users.forEach((user) => {
         if(user.email === email && user.password === password) {
@@ -99,7 +78,6 @@ class userController {
         });
       }
     }
->>>>>>> Bug-158731382-fix-travis-and-coveralls
 }
 
 export default userController;

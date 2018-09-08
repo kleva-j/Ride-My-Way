@@ -6,11 +6,7 @@ const rides = [
     driver: {
       name: 'Monica Ada',
       gender: 'female',
-<<<<<<< HEAD
       id: 101
-=======
-      id: 50
->>>>>>> Bug-158731382-fix-travis-and-coveralls
     },
     date: '2018 - 07 - 21',
     pasengers: [
@@ -31,11 +27,7 @@ const rides = [
     driver: {
       name: 'casandra Chuma',
       gender: 'female',
-<<<<<<< HEAD
       id: 102
-=======
-      id: 51
->>>>>>> Bug-158731382-fix-travis-and-coveralls
     },
     date: '2018 - 07 - 28',
     pasengers: [
@@ -56,11 +48,7 @@ const rides = [
     driver: {
       name: 'Nelson kelechi',
       gender: 'male',
-<<<<<<< HEAD
       id: 103
-=======
-      id: 52
->>>>>>> Bug-158731382-fix-travis-and-coveralls
     },
     date: '2018 - 07 - 23',
     pasengers: [

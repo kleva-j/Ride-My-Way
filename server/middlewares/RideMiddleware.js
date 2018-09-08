@@ -62,7 +62,12 @@ class RideValidator {
       error.driver = `Valid 'NAME', 'GENDER', and 'ID' are required`
     }
 
-    if(!error) next();
+    const isEmpty = (obj) => {
+      for (var prop in obj) { return false; }
+      return true;
+    }
+
+    if(isEmpty(error)) next()
     res.status(400).json({ error });
   }
 
@@ -79,6 +84,7 @@ class RideValidator {
     if(isNaN(rideId)) res.status(400).json({
       message: 'Please enter a valid numbers'
     })
+    console.log(rideId)
     next();
   }
 

@@ -2,18 +2,7 @@ language: node_js
 sudo: false
 node_js:
   - "stable"
-# cache:
-#   directories:
-#     - "node_modules"
-# before_install:
-#   - cd server
 env:
-  global:
-    - CC_TEST_REPORTER_ID=60d2e3d3908a8dd4f8758139083b1f1fb88cd8e4ff6132aa7a4c7b70a209296d
-<<<<<<< HEAD
-script:
-  - npm test
-=======
-# script:
-#   - npm test: "nyc --reporter=html --reporter=text mocha"
->>>>>>> Bug-158731382-fix-travis-and-coveralls
+  - COVERALLS_REPO_TOKEN=nV02p7HmeGiNBM8s3EdDqTlHhq5PKaXTo
+after_success:
+- npm run coveralls

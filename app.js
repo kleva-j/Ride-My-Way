@@ -11,10 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api/v1', rideRouter);
 app.use('/api/v1/auth', userRouter);
-<<<<<<< HEAD
-=======
 // app.use('api/v1/users')
->>>>>>> Bug-158731382-fix-travis-and-coveralls
 
 app.get('/', (req, res) => {
   res.status(200).send('Welcome to Ride-My-Way Api');
