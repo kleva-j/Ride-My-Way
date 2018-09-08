@@ -1,11 +1,14 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import jsend from 'jsend';
+import cors from 'cors';
+import morgan from 'morgan';
+
 import rideRouter from './server/routes/ridesRoute';
 import userRouter from './server/routes/userRoute';
 
 const app = express();
 
-// use middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -18,7 +21,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  res.status(404).send('Welcome to Ride-My-Way Api, this route does not exist!');
+  res.status(404).send('Wrong endpoint, visit api/v1/rides');
 });
 
 const port = process.env.PORT || 3000;
