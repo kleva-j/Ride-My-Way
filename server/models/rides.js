@@ -27,6 +27,6 @@ client.query(sql, (err) => {
   }
   else {
     client.end();
-    console.log('requests table created');
+    console.log('rides table created');
   }
 });
