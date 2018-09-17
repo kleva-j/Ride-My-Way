@@ -6,12 +6,12 @@ dotenv.config();
 let connectionString = "";
 
 if (process.env.NODE_ENV === 'test') {
-  connectionString = process.env.DATABASE_TEST
+  connectionString = process.env.DB_TEST
 }
 else if (process.env.NODE_ENV === 'development') {
-  connectionString = process.env.DATABASE_DEV
+  connectionString = process.env.DB_DEV
 }
-else { connectionString = process.env.DATABASE_URL }
+else { connectionString = process.env.DB_URL }
 
 const pool = pg.Pool({ connectionString });
 

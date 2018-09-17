@@ -1,13 +1,14 @@
- {
+{
   "name": "ride-my-way",
   "version": "1.0.0",
   "description": "A carpooling application that provides drivers with the ability to create ride offers and passengers to join available ride offers.",
   "main": "app.js",
   "scripts": {
-    "test": "nyc mocha --require babel-core/register server/test/*.js",
+    "test": "NODE_ENV=TEST nyc mocha --require babel-core/register server/test/*.js",
     "build": "npm run clean && babel server -d dist",
     "clean": "rm -r dist && mkdir dist",
-    "start": "nodemon --exec babel-node app.js"
+    "start": "nodemon --exec babel-node app.js",
+    "dev": "NODE_ENV=DEVELOPMENT nodemon --exec babel-node app.js"
   },
   "repository": {
     "type": "git",
@@ -31,11 +32,14 @@
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
     "coffeescript": "^2.3.1",
+    "cors": "^2.8.4",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.12.0",
     "istanbul": "^0.4.5",
+    "jsend": "^1.0.2",
     "mocha": "^5.2.0",
+    "morgan": "^1.9.1",
     "nyc": "^12.0.2"
   },
   "dependencies": {
