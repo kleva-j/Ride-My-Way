@@ -2,7 +2,7 @@
  * @class Validate
  * @classdesc validates an input
  */
- class Validate {
+class Validate {
   /**
    * @static
    * @param {object} obj - the object to be validated
@@ -10,11 +10,11 @@
    * @memberof validation
    */
   static isEmpty(obj) {
-      for (var prop in obj) return false;
-      return true;
+    for (const _prop in obj) return false;
+    return true;
   }
 
-   /**
+  /**
    * @static
    * @param {object} obj - the object to be validated
    * @return {boolean} - returns results of the validation
@@ -34,8 +34,8 @@
    */
   static isLength(obj, range) {
     const { min, max } = range;
-    if(obj.length > min){
-      if(obj.length < max) return true;
+    if (obj.length > min) {
+      if (obj.length < max) return true;
       return false;
     }
     return false;
@@ -43,7 +43,7 @@
 
   /**
    * @static
-   * @param {object} obj - the object to be validated
+   * @param {object} email - the object to be validated
    * @return {boolean} - returns results of the validation
    * @memberof validation
    */

@@ -1,5 +1,3 @@
-import Validator from './authenticate';
-const {isEmpty} = Validator;
 /**
  * @class Auth
  * @classdesc Authenticates user input

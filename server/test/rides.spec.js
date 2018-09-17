@@ -28,7 +28,7 @@ describe('RIDE CONTROLLER', () => {
           expect(res.body).to.be.an('object');
           expect(res.body.error.start)
             .to.include('A Location is required');
-            done();
+          done();
         });
     });
     it('should not create ride with an empty date field', (done) => {
@@ -49,7 +49,7 @@ describe('RIDE CONTROLLER', () => {
           expect(res.body).to.be.an('object');
           expect(res.body.error.date)
             .to.include('A Date is required');
-            done();
+          done();
         });
     });
     it('should not create ride with an empty destination field', (done) => {
@@ -70,7 +70,7 @@ describe('RIDE CONTROLLER', () => {
           expect(res.body).to.be.an('object');
           expect(res.body.error.stop)
             .to.include('A Destination is required');
-            done();
+          done();
         });
     });
     it('should not create ride with an empty driver details', (done) => {
@@ -86,8 +86,8 @@ describe('RIDE CONTROLLER', () => {
           expect(res.status).to.equal(400);
           expect(res.body).to.be.an('object');
           expect(res.body.error.driver)
-            .to.include(`Driver's details are required`);
-            done();
+            .to.include('Driver\'s details are required');
+          done();
         });
     });
     it('should not create ride with less than 3 characters of the location', (done) => {
@@ -107,8 +107,8 @@ describe('RIDE CONTROLLER', () => {
           expect(res.status).to.equal(400);
           expect(res.body).to.be.an('object');
           expect(res.body.start)
-            .to.include({length: 'Please enter a valid length of Destination'});
-            done();
+            .to.include({ length: 'Please enter a valid length of Destination' });
+          done();
         });
     });
     // it('should not create ride with less than 3 characters of the destination', (done) => {
