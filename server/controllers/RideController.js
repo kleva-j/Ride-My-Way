@@ -1,6 +1,3 @@
-import model from '../dummyModels/index';
-
-const { rides, requests } = model;
 
 /**
  * @class RideController
