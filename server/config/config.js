@@ -1,4 +1,4 @@
-import pg from 'pg';
+import { Pool } from 'pg';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === 'test') {
   connectionString = process.env.DB_DEV;
 } else { connectionString = process.env.DB_URL; }
 
-const pool = pg.Pool({ connectionString });
+const pool = new Pool({ connectionString });
 
 export default (callback) => {
   pool.connect((err, client, done) => callback(err, client, done));

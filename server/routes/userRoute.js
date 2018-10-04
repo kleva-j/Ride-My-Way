@@ -1,16 +1,12 @@
 import express from 'express';
-import Auth from '../middlewares/UserValidation';
 import userController from '../controllers/userController';
+import verifyLogin from '../middlewares/authLogin';
 
-const { AuthInputLength, AuthLogin, AuthSignUp } = Auth;
-
-const { RegisterUser, SignInUser } = userController;
+const { updateUser } = userController;
 
 const userRouter = express.Router();
 
-userRouter.route('/login')
-  .post(AuthLogin, SignInUser);
-userRouter.route('/signup')
-  .post(RegisterUser);
+userRouter.route('/user/update')
+  .post(verifyLogin, updateUser);
 
 export default userRouter;

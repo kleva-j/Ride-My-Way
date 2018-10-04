@@ -1,22 +1,38 @@
 import express from 'express';
-import RideMiddleware from '../middlewares/RideMiddleware';
 import RideController from '../controllers/RideController';
+import verifyLogin from '../middlewares/authLogin';
+import Validate from '../middlewares/validate';
 
-const { validateInput, validateID } = RideMiddleware;
+const { validateInput } = Validate;
 
-const { createRideOffer, makeRequestToJoin, getSpecificRide, getRides } = RideController;
+const {
+  createRide,
+  getSpecificRide,
+  getAllRides,
+  completeRide,
+  editRide,
+  cancelRide,
+  deleteRide,
+  GetUserRides,
+} = RideController;
 
 const rideRouter = express.Router();
 
 rideRouter.route('/rides')
-  .post(validateInput, createRideOffer)
-  .get(getRides);
-
+  .get(getAllRides);
 rideRouter.route('/rides/:rideId')
-  .get(validateID, getSpecificRide);
-
-rideRouter.route('/rides/:rideId/requests')
-  .post(validateID, makeRequestToJoin);
-
+  .get(getSpecificRide)
+  .post(completeRide, editRide, cancelRide, deleteRide);
+rideRouter.route('/rides/:userId/rides')
+  .get(GetUserRides)
+  .post(verifyLogin, validateInput, createRide);
 
 export default rideRouter;
+
+/**
+ * validate user id
+ * validata ride id
+ * validate user data { email, password, phoneNumber fullname }
+ * validate login data
+ * validate date and time
+ */

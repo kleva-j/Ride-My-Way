@@ -1,117 +1,143 @@
-// /**
-//  * @class userController
-//  * @classdesc Implements user being able to create a ride offer, get specific ride offer.
-//  * make a request to join a ride
-//  */
-// class userController {
-//   /**
-//    * create ride offer
-//    *
-//    * @static
-//    * @param {object} req - The request object
-//    * @param {object} res - The response object
-//    * @return {object} Message and user data
-//    * @memberof userController
-//    */
-//   static RegisterUser(req, res) {
-//     const {
-//       userid, firstname, lastname, username, email, password
-//     } = req.body;
-//     const hashPassword = SHA256(password).toString();
+import uuid from 'uuid/v4';
+import jwt from 'jsonwebtoken';
+import pool from './../config/config';
+import crypto from '../middlewares/crypto';
 
-//     const text = 'INSERT INTO users( userid, firstname, lastname, username, email, password, hashpassword) VALUES($1, $2, $3, $4, $5, $6, $7)  RETURNING *';
-//     const values = [userid, firstname, lastname, username, email, password, hashPassword];
+const { encrypt, decrypt } = crypto;
 
-//     pool.query(text, values, (err, resp) => {
-//       console.log('i am here');
-//       if (err) {
-//         console.log('An error occurred');
-//         return err.stack;
-//       }
-//       if (resp) {
-//         res.status(201).json({
-//           message: 'Signed in successfully!',
-//           data: resp.rows[0]
-//         });
-//       }
-//     });
-//     // pool.connect()
-//     //   .then(client => client.query('SELECT * FROM users WHERE id = $1', [1])
-//     //     .then((res) => {
-//     //       client.release();
-//     //       console.log(res.rows[0]);
-//     //     })
-//     //     .catch((e) => {
-//     //       client.release();
-//     //       console.log(err.stack);
-//     //     }));
-//   }
+/**
+ * @class userController
+ * @classdesc Implements user registration and signin process
+ */
+class userController {
+  /**
+   * Register new user
+   *
+   * @static
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @return {object} Message and user data
+   * @memberof userController
+   */
+  static RegisterUser(req, res) {
+    const {
+      fullname, username, email, password
+    } = req.body;
 
-//   /**
-//    * Register User
-//    *
-//    * @static
-//    * @param {object} req - The request object
-//    * @param {object} res - The response object
-//    * @return {object} Message and ride data
-//    * @memberof userController
-//    */
-//   static SignInUser(req, res) {
-//     // const { email, password } = req.body;
+    const hash = encrypt(password);
 
-//     res.status(202).json({
-//       message: 'User signed in successfully'
-//     });
-//   }
-// }
+    const query = {
+      text: 'INSERT INTO users (id, fullname, username, password, email) VALUES($1, $2, $3, $4, $5) RETURNING *',
+      values: [uuid(), fullname.toLowerCase(), username.toLowerCase(), hash, email]
+    };
 
-//       // if(logUser) {
-//         // res.status(202).json({
-//           // message: 'User signed in successfully',
-//           // data: logUser
-//         // });
-//       // }
-//       // else {
-//         // res.status(404).json({
-//           // status: 'fail',
-//           // message: 'Incorrect Email or password'
-//         // });
-//   /**
-//    * Get User
-//    *
-//    * @static
-//    * @param {object} req - The request object
-//    * @param {object} res - The response object
-//    * @return {object} Message and ride data
-//    * @memberof userController
-//    */
-//     static getUser(req, res) {
-//       // const usernameparams = req.params.username.toString();
-//       const getrides = (username) => {
-//         const sql = `SELECT * FROM "public"."users" LIMIT 100`;
-//         pool((err, client, done) => {
-//           if (err) return res.status(400).jsend.error({
-//             message: 'error connecting to the database'
-//           });
+    pool((err, client, done) => {
+      if (err) res.status(500).jsend.error({ message: 'Internal server error' });
+      client.query(query, (error, response) => {
+        done();
+        if (error) res.status(400).jsend.error({ message: 'Error creating ride' });
+        const user = response.rows[0];
+        const token = jwt.sign({
+          userId: user.id,
+          username: user.username,
+          email: user.email
+        }, process.env.SECRET, { expiresIn: '1 day' });
+        res.status(200).jsend.success({ message: 'user is signed up successfully', token });
+      });
+    });
+  }
 
-//           client.query(sql, (error, result) => {
-//             done();
-//             if (error) return res.status(400).jsend.error({
-//               message: 'wrong input parsed as parameter id'
-//             });
-//             if (
-//               !result.rows ||
-//               result.rows === null ||
-//               result.rows === undefined ||
-//               result.rows.length < 0
-//             ) {
-//               console.log('no rows returned')
-//             } else {
-//               console.log(results);
-//             }
-//           });
-//         });
-//       };
-//     }
-// }
-// export default userController;
+  /**
+   * login user
+   *
+   * @static
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @return {object} Message and user data
+   * @memberof userController
+   */
+  static loginUser(req, res) {
+    const { email, password } = req.body;
+    const query = {
+      text: 'SELECT * FROM users WHERE email = $1',
+      values: [email]
+    };
+
+    pool((err, client, done) => {
+      if (err) res.status(500).jsend.error({ message: 'Internal server error' });
+      client.query(query, (err, response) => {
+        done();
+        if (err) res.status(500).jsend.error({ message: 'Error connecting to database' });
+        if (response) {
+          if (response.rows.length === 0) {
+            res.status(400).jsend.fail({
+              message: 'Email or password is incorrect',
+            });
+          } else {
+            const user = response.rows[0];
+            const checkpass = decrypt(password, user.password);
+            if (checkpass) {
+              const token = jwt.sign({
+                userId: user.id,
+                username: user.username,
+                email: user.email,
+              }, process.env.SECRET, { expiresIn: '1 day' });
+              res.status(200).jsend.success({
+                message: `User ${user.username} logged in seccessfully`,
+                id: user.id,
+                username: user.username,
+                email: user.email,
+                token
+              });
+            } else res.status(401).jsend.fail({ message: 'Password is incorrect' });
+          }
+        }
+      });
+    });
+  }
+
+  /**
+   * update user
+   *
+   * @static
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @return {object} Message and user data
+   * @memberof userController
+   */
+  static updateUser(req, res) {
+    const { id, password, newPassword } = req.body;
+
+    if (!newPassword || password === [null || undefined]) {
+      res.status(400).jsend.fail({ message: 'Old and new password fields are empty' });
+    } else {
+      const sql1 = 'SELECT * FROM users WHERE id = $1';
+      const sql2 = 'UPDATE user SET password = $1 WHERE id = $2';
+      const updatePass = () => {
+        pool((err, client, done) => {
+          if (err) res.status(401).jsend.error({ message: 'Internal server error' });
+          client.query(sql2, [newPassword, id], (err) => {
+            done();
+            if (err) res.status(401).jsend.error({ message: 'Unable to complete request' });
+            res.status(200).jsend.success({ message: 'password successfully updated' });
+          });
+        });
+      };
+      pool((err, client, done) => {
+        if (err) res.status(400).jsend.error({ message: 'Internal server error' });
+        client.query(sql1, [id], (err, user) => {
+          done();
+          if (err) res.status(400).jsend.error({ message: 'Error connecting to database' });
+          if (!user || user.rows.length <= 0) res.status(403).jsend.fail({ message: 'Incorrect password' });
+          else {
+            bcrypt.compare(password, user.rows[0].password, (err, isMatch) => {
+              if (isMatch) updatePass();
+            });
+          }
+        });
+      });
+    }
+  }
+}
+
+export default userController;

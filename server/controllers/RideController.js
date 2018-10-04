@@ -1,4 +1,4 @@
-import pool from './../../config/config';
+import pool from './../config/config';
 
 /**
  * @class RideController
@@ -17,15 +17,18 @@ class Ride {
    */
   static createRide(req, res) {
     const data = [
-      req.body.location, req.body.destination, Number(req.body.slot),
-      req.body.time, req.currentUser.id, req.currentUser.username,
+      req.body.location, req.body.destination, Number(req.body.seats),
+      req.body.time, req.body.userId, req.body.username,
       req.body.carModel, req.body.departureDate
     ];
-    const sql = 'INSERT INTO rides(location, destination, seats, time, user_id, driver, carModel, takeOffDate) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *';
+    const query = {
+      text: 'INSERT INTO rides(location, destination, seats, time, user_id, driver, carModel, takeOffDate) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
+      values: data
+    };
 
     pool((err, client, done) => {
       if (err) res.status(500).jsend.error({ message: 'Error connecting to database' });
-      return client.query(sql, data, (error, ride) => {
+      client.query(query, (error, ride) => {
         done();
         if (error) res.status(400).jsend.error({ message: 'Error creating ride' });
         res.jsend.success({ ride: ride.rows[0] });
@@ -44,7 +47,6 @@ class Ride {
    */
   static getAllRides(req, res) {
     const sql = 'SELECT * FROM rides';
-
     pool((err, client, done) => {
       if (err) res.status(500).jsend.error({ message: 'Internal Server Error' });
       client.query(sql, (error, response) => {
@@ -55,6 +57,56 @@ class Ride {
       });
     });
   }
+
+  /**
+   * Get user ride
+   *
+   * @static
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @return {object} Message and ride data
+   * @memberof RideController
+   */
+  static GetUserRides(req, res) {
+    const { userId } = req.body.currentUser;
+    const sql = 'SELECT * FROM rides WHERE user_id = $1';
+    pool((err, client, done) => {
+      if (err) res.status(500).jsend.error({ message: 'Internal Server Error' });
+      client.query(sql, [userId], (error, response) => {
+        done();
+        if (error) res.status(400).jsend.error({ message: 'Error fetching rides' });
+        else if (!response) res.status(404).jsend.fail({ message: 'No rides found' });
+        res.jsend.success({ rides: response.rows });
+      });
+    });
+  }
+
+  /**
+   * Get a ride
+   *
+   * @static
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @return {object} Message and ride data
+   * @memberof RideController
+   */
+  static getSpecificRide(req, res) {
+    const { rideId } = req.params;
+    const query = {
+      text: 'SELECT * FROM rides WHERE id = $1',
+      values: [rideId]
+    };
+    pool((err, client, done) => {
+      if (err) res.status(500).jsend.error({ message: 'Internal Server Error' });
+      client.query(query, (error, response) => {
+        done();
+        if (error) res.status(400).jsend.error({ message: 'Error fetching rides' });
+        else if (!response) res.status(404).jsend.fail({ message: 'No rides found' });
+        else res.jsend.success({ rides: response.rows });
+      });
+    });
+  }
+
   /**
    * create ride offer
    *
@@ -72,23 +124,23 @@ class Ride {
       const sql2 = 'DELETE FROM request WHERE ride_id = $1';
 
       pool((err, client, done) => {
-        if (err) return res.status(500).jsend.error({ message: 'Internal Server Error' });
+        if (err) res.status(500).jsend.error({ message: 'Internal Server Error' });
 
         client.query(sql2, [req.ride.id], (err) => {
           done();
-          if (err) return res.status(500).jsend.error({ message: 'Internal Server Error' });
-          res.jsend.success({ message: 'Requests made to this ride were sucessfully deleted' });
+          if (err) res.status(500).jsend.error({ message: 'Internal Server Error' });
+          res.jsend.success({ message: 'Requests made to this ride have been deleted' });
         });
       });
     };
 
     pool((err, client, done) => {
-      if (err) return res.status(500).jsend.error({ message: 'Internal Server Error' });
+      if (err) res.status(500).jsend.error({ message: 'Internal Server Error' });
 
       if (currentUser.id === req.ride.user_id) {
         client.query(sql1, [req.ride.id], (err) => {
           done();
-          if (err) return res.status(500).jsend.error({ message: 'Internal Server Error' });
+          if (err) res.status(500).jsend.error({ message: 'Internal Server Error' });
           afterEffects();
           res.jsend.success({ message: 'Ride sucessfully deleted' });
         });
@@ -138,10 +190,45 @@ class Ride {
       });
     }
   }
+
+  /**
+   * Edit ride offer
+   *
+   * @static
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @return {object} Message and ride data
+   * @memberof Ride
+   */
+  static editRide(req, res) {
+    res.status(200).jsend.success({ message: 'successful query' });
+  }
+
+  /**
+   * Complete ride
+   *
+   * @static
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @return {object} Message and ride data
+   * @memberof Ride
+   */
+  static completeRide(req, res) {
+    const { rideId } = req.params;
+    const { currentUser } = req;
+    const query = {
+      text: 'UPDATE rides SET status = $1 WHERE id = $2 AND user_id = $3',
+      values: ['completed', rideId, currentUser.id]
+    };
+    pool((err, client, done) => {
+      if (err) res.status(500).jsend.error({ message: 'Internal server error' });
+      client.query(query, (err) => {
+        done();
+        if (err) res.status(500).jsend.error({ message: 'Error completing request' });
+      });
+    });
+    res.status(200).jsend.success({ message: 'successful query' });
+  }
 }
 
 export default Ride;
-/**
- * complete ride
- * Edit ride
- * /
