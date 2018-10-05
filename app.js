@@ -5,7 +5,7 @@ import path from 'path';
 import jsend from 'jsend';
 import cors from 'cors';
 import expressValidator from 'express-validator';
-import routers from './server/routes/index';
+import routers from './server/index';
 
 const app = express();
 

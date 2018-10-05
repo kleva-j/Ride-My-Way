@@ -1,5 +1,6 @@
 import express from 'express';
 import requestController from './request';
+import verifyLogin from '../utils/authLogin';
 
 const {
   createRequest, updateRequestStatus, getAllRequest,
@@ -8,13 +9,13 @@ const {
 
 const reqRouter = express.Router();
 
-reqRouter.route('requests')
-  .get(getAllRequest);
-reqRouter.route('/requests/:reqId')
-  .get(getSingleRequest)
-  .post(updateRequestStatus, cancelRequest)
-  .delete(deleteRequest);
-reqRouter.route('/requests/:userId/:rideId/request')
-  .post(createRequest);
+reqRouter.route('/')
+  .get(verifyLogin, getAllRequest);
+reqRouter.route('/:rideId/:reqId')
+  .get(verifyLogin, getSingleRequest)
+  .post(verifyLogin, updateRequestStatus, cancelRequest)
+  .delete(verifyLogin, deleteRequest);
+reqRouter.route('/:rideId/request')
+  .post(verifyLogin, createRequest);
 
 export default reqRouter;

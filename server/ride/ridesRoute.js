@@ -18,12 +18,12 @@ const {
 
 const rideRouter = express.Router();
 
-rideRouter.route('/rides')
+rideRouter.route('/')
   .get(getAllRides);
-rideRouter.route('/rides/:rideId')
+rideRouter.route('/:rideId')
   .get(getSpecificRide)
   .post(completeRide, editRide, cancelRide, deleteRide);
-rideRouter.route('/rides/:userId/rides')
+rideRouter.route('/:userId/rides')
   .get(GetUserRides)
   .post(verifyLogin, validateInput, createRide);
 
