@@ -1,7 +1,7 @@
 import express from 'express';
 import RideController from './RideController';
-import verifyLogin from '../middlewares/authLogin';
-import Validate from '../middlewares/validate';
+import verifyLogin from '../utils/authLogin';
+import Validate from '../utils/validate';
 
 const { validateInput } = Validate;
 

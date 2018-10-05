@@ -1,7 +1,7 @@
 import uuid from 'uuid/v4';
 import jwt from 'jsonwebtoken';
-import pool from './../config/config';
-import crypto from '../middlewares/crypto';
+import pool from '../config';
+import crypto from '../utils/crypto';
 
 const { encrypt, decrypt } = crypto;
 
@@ -24,11 +24,11 @@ class userController {
       fullname, username, email, password
     } = req.body;
 
-    const hash = encrypt(password);
+    const hashPassword = encrypt(password);
 
     const query = {
       text: 'INSERT INTO users (id, fullname, username, password, email) VALUES($1, $2, $3, $4, $5) RETURNING *',
-      values: [uuid(), fullname.toLowerCase(), username.toLowerCase(), hash, email]
+      values: [uuid(), fullname.toLowerCase(), username.toLowerCase(), hashPassword, email]
     };
 
     pool((err, client, done) => {
@@ -107,36 +107,37 @@ class userController {
    */
   static updateUser(req, res) {
     const { id, password, newPassword } = req.body;
+    const hashPassword = encrypt(newPassword);
+    const query1 = {
+      text: 'SELECT * FROM users WHERE id = $1',
+      values: [id]
+    };
+    const query2 = {
+      text: 'UPDATE users SET password = $1 WHERE id = $2',
+      values: [hashPassword, id]
+    };
 
-    if (!newPassword || password === [null || undefined]) {
-      res.status(400).jsend.fail({ message: 'Old and new password fields are empty' });
-    } else {
-      const sql1 = 'SELECT * FROM users WHERE id = $1';
-      const sql2 = 'UPDATE user SET password = $1 WHERE id = $2';
-      const updatePass = () => {
-        pool((err, client, done) => {
-          if (err) res.status(401).jsend.error({ message: 'Internal server error' });
-          client.query(sql2, [newPassword, id], (err) => {
-            done();
-            if (err) res.status(401).jsend.error({ message: 'Unable to complete request' });
-            res.status(200).jsend.success({ message: 'password successfully updated' });
-          });
-        });
-      };
+    const updatePass = () => {
       pool((err, client, done) => {
-        if (err) res.status(400).jsend.error({ message: 'Internal server error' });
-        client.query(sql1, [id], (err, user) => {
+        if (err) res.status(401).jsend.error({ message: 'Internal server error' });
+        client.query(query2, (err) => {
           done();
-          if (err) res.status(400).jsend.error({ message: 'Error connecting to database' });
-          if (!user || user.rows.length <= 0) res.status(403).jsend.fail({ message: 'Incorrect password' });
-          else {
-            bcrypt.compare(password, user.rows[0].password, (err, isMatch) => {
-              if (isMatch) updatePass();
-            });
-          }
+          if (err) res.status(401).jsend.error({ message: 'Unable to complete request' });
+          res.status(200).jsend.success({ message: 'Your Password has been updated successfully ' });
         });
       });
-    }
+    };
+    pool((err, client, done) => {
+      if (err) res.status(400).jsend.error({ message: 'Internal server error' });
+      client.query(query1, (err, user) => {
+        done();
+        if (err) res.status(400).jsend.error({ message: 'Error connecting to database' });
+        if (!user || user.rows.length <= 0) res.status(403).jsend.fail({ message: 'Incorrect password' });
+        const ifExist = decrypt.compare(password, user.rows[0].password);
+        if (ifExist) updatePass();
+        else res.status(400).jsend.fail({ message: 'Password is incorrect' });
+      });
+    });
   }
 }
 
