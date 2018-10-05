@@ -181,7 +181,7 @@ class requestController {
   }
 
   /**
-   * Delete request to ride
+   * Cancel request to ride
    *
    * @static
    * @param {object} req - The request object
@@ -211,6 +211,32 @@ class requestController {
         if (error) res.status(500).jsend.error({ message: 'error cancelling request' });
         alterRide();
         res.jsend.success({ message: 'you have cancelled this request' });
+      });
+    });
+  }
+
+  /**
+   * Get single request to ride
+   *
+   * @static
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @return {object} Message and user data
+   * @memberof requestController
+   */
+  static getSingleRequest(req, res) {
+    const { requestId } = req.params.reqId;
+    const query = {
+      text: 'SELECT * FROM requests WHERE id = $1',
+      values: [requestId]
+    };
+
+    pool((err, client, done) => {
+      if (err) res.status(500).jsend.error({ message: 'Internal server error' });
+      client.query(query, (err, result) => {
+        done();
+        if (err) res.status(500).jsend.error({ message: 'error sending reqeuest' });
+        res.status(200).jsend.success({ message: result.rows[0] });
       });
     });
   }

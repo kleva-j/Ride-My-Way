@@ -69,7 +69,7 @@ class Ride {
    */
   static GetUserRides(req, res) {
     const { userId } = req.body.currentUser;
-    const sql = 'SELECT * FROM rides WHERE user_id = $1';
+    const sql = 'SELECT * FROM rides WHERE id = $1';
     pool((err, client, done) => {
       if (err) res.status(500).jsend.error({ message: 'Internal Server Error' });
       client.query(sql, [userId], (error, response) => {
@@ -121,7 +121,7 @@ class Ride {
     const { currentUser } = req;
 
     const afterEffects = () => {
-      const sql2 = 'DELETE FROM request WHERE ride_id = $1';
+      const sql2 = 'DELETE FROM request WHERE id = $1';
 
       pool((err, client, done) => {
         if (err) res.status(500).jsend.error({ message: 'Internal Server Error' });
@@ -161,7 +161,7 @@ class Ride {
     const sql1 = 'UPDATE rides SET status = $1 WHERE id = $2';
 
     const afterEffects = (status) => {
-      const sql2 = 'UPDATE requests SET status = $1 WHERE ride_id = $2';
+      const sql2 = 'UPDATE requests SET status = $1 WHERE id = $2';
 
       pool((err, client, done) => {
         if (err) res.status(500).jsend.error({ message: 'Internal server error' });
