@@ -86,19 +86,19 @@ class Validate {
       username, password
     } = req.body;
 
-    // check for username characters
+    // check if username is alphanumeric
     if (!validator.isAlphanumeric(username)) {
       res.status(406).jsend.fail({
         message: 'username should contain only alphabets and numbers.',
       });
     }
-    // Check for Username Length
+    // Check Username Length
     if (!validator.isLength(username, { min: 6, max: 15 })) {
       res.status(406).jsend.fail({
         message: 'Username can only be from 3 to 15 characters',
       });
     }
-    // Check for Password
+    // Check Password Length
     if (!validator.isLength(password, { min: 6, max: 50 })) {
       res.status(406).jsend({
         message: 'Password can only be from 6 to 12 characters',

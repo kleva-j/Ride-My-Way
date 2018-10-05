@@ -1,6 +1,6 @@
 import express from 'express';
 import Validate from '../middlewares/validate';
-import userController from '../controllers/userController';
+import userController from '../user/userController';
 
 const {
   validateSignupData,

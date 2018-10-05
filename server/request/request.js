@@ -1,4 +1,4 @@
-import pool from './../config/config';
+import pool from '../config/config';
 
 /**
  * @class userController

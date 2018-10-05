@@ -1,5 +1,5 @@
 import express from 'express';
-import RideController from '../controllers/RideController';
+import RideController from './RideController';
 import verifyLogin from '../middlewares/authLogin';
 import Validate from '../middlewares/validate';
 

@@ -1,5 +1,5 @@
 import express from 'express';
-import userController from '../controllers/userController';
+import userController from './userController';
 import verifyLogin from '../middlewares/authLogin';
 
 const { updateUser } = userController;
