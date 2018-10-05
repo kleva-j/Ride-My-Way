@@ -1,6 +1,6 @@
-import rideRoute from '../ride/ridesRoute';
-import userRoute from '../user/userRoute';
-import authRoute from '../user/authRoute';
+import rideRoute from './ride/ridesRoute';
+import userRoute from './user/userRoute';
+import authRoute from './user/authRoute';
 
 export default (app) => {
   app.use('/api/v1', rideRoute);
