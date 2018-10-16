@@ -5,6 +5,7 @@ import path from 'path';
 import jsend from 'jsend';
 import cors from 'cors';
 import expressValidator from 'express-validator';
+import helmet from 'helmet';
 import routers from './server/index';
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(jsend.middleware);
 app.use(cors());
+app.use(helmet());
 
 if (process.env.NODE_ENV !== 'TEST') {
   app.use(logger('dev'));
@@ -52,7 +54,6 @@ app.use((err, req, res) => {
   res.status(500).jsend.error({ message: 'page not found' });
   res.sendFile(path.join(__dirname, 'template', '500.html'));
 });
-
 
 const port = process.env.PORT || 3000;
 

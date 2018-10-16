@@ -9,11 +9,12 @@
     "build": "babel server -d server/dist",
     "postbuild": "nodemon server/dist/app",
     "clean": "rm -r dist && mkdir dist",
-    "start": "DEBUG=express* nodemon --exec babel-node app.js",
+    "start": "nodemon --exec babel-node app.js",
     "create-table-dev": "NODE_ENV=development babel-node ./server/models/createTables.js --exit",
     "create-table": "babel-node ./server/models/createTables.js --exit",
     "dev": "NODE_ENV=DEVELOPMENT nodemon app.js --exec babel-node",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "debug": "DEBUG=express* nodemon --exec babel-node app.js"
   },
   "repository": {
     "type": "git",
@@ -51,6 +52,7 @@
     "dotenv": "6.0.0",
     "express": "4.16.3",
     "express-validator": "5.3.0",
+    "helmet": "3.13.0",
     "jsend": "1.0.2",
     "jsonwebtoken": "8.3.0",
     "lodash": "4.17.10",

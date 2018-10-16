@@ -1,7 +1,7 @@
 import express from 'express';
 import userController from './userController';
-import verifyLogin from './authLogin';
-import Validate from './validate';
+import verifyLogin from '../utils/authLogin';
+import Validate from '../utils/validate';
 
 const { RegisterUser, loginUser, updateUser } = userController;
 const {

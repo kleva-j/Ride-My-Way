@@ -35,7 +35,7 @@ class userController {
       if (err) res.status(500).jsend.error({ message: 'Internal server error' });
       client.query(query, (error, response) => {
         done();
-        if (error) res.status(400).jsend.error({ message: 'Error creating ride' });
+        if (error) res.status(500).jsend.error({ message: 'Error creating ride' });
         const user = response.rows[0];
         const token = jwt.sign({
           userId: user.id,
@@ -70,7 +70,7 @@ class userController {
         if (err) res.status(500).jsend.error({ message: 'Error connecting to database' });
         if (response) {
           if (response.rows.length === 0) {
-            res.status(400).jsend.fail({
+            res.status(403).jsend.fail({
               message: 'Email or password is incorrect',
             });
           } else {
@@ -122,7 +122,7 @@ class userController {
         if (err) res.status(401).jsend.error({ message: 'Internal server error' });
         client.query(query2, (err) => {
           done();
-          if (err) res.status(401).jsend.error({ message: 'Unable to complete request' });
+          if (err) res.status(500).jsend.error({ message: 'Unable to complete request' });
           res.status(200).jsend.success({ message: 'Your Password has been updated successfully ' });
         });
       });
@@ -135,7 +135,7 @@ class userController {
         if (!user || user.rows.length <= 0) res.status(403).jsend.fail({ message: 'Incorrect password' });
         const ifExist = decrypt.compare(password, user.rows[0].password);
         if (ifExist) updatePass();
-        else res.status(400).jsend.fail({ message: 'Password is incorrect' });
+        else res.status(403).jsend.fail({ message: 'Password is incorrect' });
       });
     });
   }

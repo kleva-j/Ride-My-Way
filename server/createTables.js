@@ -25,23 +25,6 @@ CREATE TABLE requests(id SERIAL PRIMARY KEY, rider VARCHAR(255) NOT NULL, status
 
 const client = new Client(connectionString);
 
-// const connectClient = async () => {
-//   try {
-//     await client.connect();
-//   } catch (err) {
-//     console.log(err);
-//   }
-//   await client.query(sql, (err) => {
-//     if (err) console.log(err.stack);
-//     else console.log('User, Ride and Request Tables created');
-//   });
-//   // await client.end();
-// };
-
-// connectClient();
-
-// OR
-
 client.query(sql)
   .then(() => console.log('table created successfully'))
   .catch(err => console.log(err));

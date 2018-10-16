@@ -106,6 +106,31 @@ class Validate {
     }
     next();
   }
+
+  /**
+   * Authenticate Input Length
+   *
+   * @static
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @param {function} next - The next Middleware
+   * @return {object} Message and user data
+   * @memberof Validate
+   */
+  static validateRequestDetails(req, res, next) {
+    req.checkBody('riderID', 'rider\'s details are required');
+    req.checkBody('riders', 'list of the riders are required');
+    req.checkParams('rideID', 'ride\'s details are required');
+    req.checkBody('seats', 'The numbers of seats are required');
+    const { seats, riderID } = req.body;
+    if (!validator.isInt(seats)) res.status(406).jsend.fail({ message: 'The number of seats should be a valid Integre' });
+    if (!validator.isUUID(riderID)) res.status(406).jsend.fail({ message: 'Rider\'s ID should be a valid UUID number' });
+
+    // Check for errors
+    const errors = req.validationErrors();
+    if (errors) res.status(406).jsend.fail({ errors });
+    else next();
+  }
 }
 
 export default Validate;

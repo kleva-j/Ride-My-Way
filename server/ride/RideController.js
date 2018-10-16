@@ -31,7 +31,7 @@ class Ride {
       client.query(query, (error, ride) => {
         done();
         if (error) res.status(400).jsend.error({ message: 'Error creating ride' });
-        res.jsend.success({ ride: ride.rows[0] });
+        res.status(201).jsend.success({ ride: ride.rows[0] });
       });
     });
   }
@@ -68,15 +68,17 @@ class Ride {
    * @memberof RideController
    */
   static GetUserRides(req, res) {
-    const { userId } = req.body.currentUser;
-    const sql = 'SELECT * FROM rides WHERE id = $1';
+    const { userId } = req.auth;
+    const sql = 'SELECT * FROM rides WHERE user_id = $1';
     pool((err, client, done) => {
       if (err) res.status(500).jsend.error({ message: 'Internal Server Error' });
       client.query(sql, [userId], (error, response) => {
         done();
-        if (error) res.status(400).jsend.error({ message: 'Error fetching rides' });
-        else if (!response) res.status(404).jsend.fail({ message: 'No rides found' });
-        res.jsend.success({ rides: response.rows });
+        if (error) {
+          console.log(error);
+          res.status(400).jsend.error({ message: 'Error fetching rides' });
+        } else if (!response || response === undefined) res.status(404).jsend.fail({ message: 'No rides found' });
+        else res.jsend.success({ rides: response.rows });
       });
     });
   }

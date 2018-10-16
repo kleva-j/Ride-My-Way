@@ -13,6 +13,6 @@ if (process.env.NODE_ENV === 'test') {
 
 const pool = new Pool({ connectionString });
 
-export default (callback) => {
-  pool.connect((err, client, done) => callback(err, client, done));
+export default (cb) => {
+  pool.connect((err, client, done) => cb(err, client, done));
 };
