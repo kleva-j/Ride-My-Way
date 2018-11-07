@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="../stylesheet/style.css">
     <link href="https://fonts.googleapis.com/css?family=Basic" rel="stylesheet">
   </head>
-
+  
   <body>
     <div class="container">
-
+      
       <header class="main">
         <nav class="nav-bar">
           <div class="logo">
@@ -33,24 +33,24 @@
             <span class="menu_wake"></span>
           </a>
         </nav>
-        <section class="login-form">
-          <h3>Log In</h3>
-          <form action="catalog.html" method="get" id="log-form">
-            <input type="email" name="email" id="email" placeholder="Email" autocomplete="email" required>
-            <input type="password" name="password" id="password" placeholder="Password" required minlength="6">
-            <button type="submit" id="login-button">LOGIN</button>
-            <div id="options">
-              <label for="check">
-                <input type="checkbox" name="checkbox" id="check">
-                <h4>Remember Me</h4>
-              </label>
-            </div>
-            <div class="sign-in">
-              <h3>Don't have an account? <a href="sign-up.html"> SIGN UP</a></h3>
-            </div>
-          </form>
-        </section>
       </header>
+      <section class="login-form">
+        <h3>Log In</h3>
+        <form action="catalog.html" method="get" id="log-form">
+          <input type="email" name="email" id="email" placeholder="Email" autocomplete="email" required>
+          <input type="password" name="password" id="password" placeholder="Password" required minlength="6">
+          <div id="options">
+            <label for="check">
+              <input type="checkbox" name="checkbox" id="check">
+              <h4>Remember Me</h4>
+            </label>
+          </div>
+          <button type="submit" id="login-button">LOGIN</button>
+          <div class="sign-in">
+            <p>Don't have an account? <a href="sign-up.html"> SIGN UP</a></p>
+          </div>
+        </form>
+      </section>
 
     </div>
     <script src="../js/main.js"></script>

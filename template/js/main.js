@@ -3,22 +3,23 @@ window.onload = (function () {
   toggleSideBar();
 }());
 
+// eslint-disable-next-line require-jsdoc
 function toggleNavBar() {
   const burgar_nav = document.querySelector('.burgar-nav');
   let click = false;
   const navigations = burgar_nav.previousElementSibling;
   burgar_nav.addEventListener('click', () => {
-    if(!click) {
+    if (!click) {
       navigations.classList = 'dropdown';
       return click = true;
     }
-    
-      navigations.classList = 'navigations';
-      return click = false;
-    
+
+    navigations.classList = 'navigations';
+    return click = false;
   });
 }
 
+// eslint-disable-next-line require-jsdoc
 function toggleSideBar() {
   let [, profile, rideoffer, ridesTaken, ridesGiven] = document.querySelector('.resize').children;
 

@@ -1,12 +1,21 @@
+:root{
+  --top: 130px;
+  --box-shadow: 0 0 5px var(--light);
+  --light: #7f8c8d;
+}
+
 *{
   padding: 0;
   margin: 0;
-  font-family: basic;
   box-sizing: border-box;
+
 }
 
-.body{
+body{
   font-size: 16px;
+  background: #ecf0f1;
+  font-family: 'Capriola', sans-serif;
+  color: rebeccapurple;
 }
 
 .container{
@@ -73,14 +82,14 @@ LANDING PAGE - HEADER
 
 .nav-bar{
   height: 50px;
-  display: flex;
   font-weight: 700;
-  justify-content: space-between;
+  display: flex;
+  justify-content: space-around;
 }
 
 .logo{
   font-size: 1.5rem;
-  color: white;
+  color: rebeccapurple;
   padding: 15px 18px;
 }
 
@@ -95,29 +104,26 @@ LANDING PAGE - HEADER
 
 .join{
   font-size: 1rem;
-  padding: 0 1em;
+  padding: 0 1.3em;
 }
 
 a{
-  color: rgb(210, 210, 210);
+  color: rebeccapurple;
   text-decoration: none;
   cursor: pointer;
 }
 
 a:hover{
-  color: white
+  color: rebeccapurple;
 }
 
 .main{
-  background: linear-gradient(
-              to bottom right,
-              rgb(68, 51, 76, .6),
-              rgb(68, 51, 76, .8)),
-              url("../images/carpooling.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 8px;
+  box-shadow: 0 0 5px #7f8c8d;
+  background: white;
   text-align: center;
   margin: 0 auto;
 }
@@ -153,35 +159,40 @@ h1 + p{
 }
 
 h3{
-  line-height: 50px;
-  color:rgb(240, 240, 240);
-  font-family: basic
+  color: rebeccapurple;
+  font-family: basic;
+  padding: 10px;
+  font-size: 22px;
+  font-weight: 700;
 }
 
 input{
   background: transparent;
-  border-bottom: 2px solid white;
+  font-size: 14px;
 }
 
-input[type='text'], input[type='date'], input[type='password']{
+input[type='text'],  
+input[type='password']{
   padding:10px;
   border: none;
-  border-bottom: 2px solid #dcdde1;
-  margin-right: 40px;
-  color: white;
+}
+
+input[type='date']{
+  margin-right: 15px;
+  padding: 0 0 0 10px
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: rgba(255, 255, 255, 0.742);
+  color: #666;
 }
 ::-moz-placeholder { /* Firefox 19+ */
-  color: rgba(255, 255, 255, 0.742);
+  color: #666;
 }
 :-ms-input-placeholder { /* IE 10+ */
-  color: rgba(255, 255, 255, 0.742);
+  color: #666;
 }
 :-moz-placeholder { /* Firefox 18- */
-  color: rgba(255, 255, 255, 0.742);
+  color: #666;
 }
 
 #button{
@@ -348,16 +359,19 @@ Sign in / Log in Page
 *********************/
 
 .login-form, .signin-form{
-  margin: 80px auto;
+  margin: 0 auto;
+  margin-top: var(--top);
+  background: white;
   min-width: 300px;
   max-width: 340px;
-  background: rgba(70, 52, 78, 0.537);
-  box-shadow: 0 0 2px 1px rgba(10, 10, 10, 0.456);
+  box-shadow: 0 0 5px #7f8c8d;
+  text-align: center
 }
 
 
 #log-form{
   border-top: 1px solid orange;
+  padding: 5px
 }
 
 input[name="firstname"],
@@ -366,8 +380,10 @@ input[name="email"],
 input[name="password"],
 input[name="confirm-password"]{
   width: 80%;
-  margin: 1em auto;
+  margin: .7em auto;
   box-sizing: border-box;
+  color: #333;
+  font-size: 15px;
 }
 
 input[name="email"]{
@@ -376,26 +392,28 @@ input[name="email"]{
 
 input[type="email"]{
   border: none;
-  border-bottom: 2px solid #dcdde1;
-  color: white;
+  border-radius: 2px
+}
+
+input:not([type="submit"]) {  
+  border: 1px solid #ccc;
 }
 
 #login-button{
   font-size: 1rem;
-  margin: 2em auto 1em;
+  margin: 1em auto;
   display: block;
   padding: .8em 5em;
   border: 1px solid rgb(230, 230, 230);
   border-radius: 3px;
-  color: rgba(230, 230, 230, 0.873);
-  color: #46344E;
+  color: white;
+  background: rebeccapurple;
   cursor: pointer;
   width: 80%;
 }
 
 #login-button:hover{
-  color: #46344E;
-  background: rgba(255, 255, 255, 0.756);
+  background: rgba(102, 51, 153, 0.918)
 }
 
 #options{
@@ -416,17 +434,16 @@ input[type="email"]{
 }
 
 .sign-in{
-  border-top: 1px solid orange;
-  width: 80%;
-  margin: 20px auto 0;
-  font-size: .9em
+  text-align: center;
+  font-size: .9em;
+  padding-bottom: 10px
 }
-
-.sign-in > h3 > a{
+ 
+.sign-in > p > a{
   color: rgb(199, 149, 57);
 }
 
-.sign-in > h3 > a:hover{
+.sign-in > p > a:hover{
   color: orange
 }
 /**********************
@@ -434,7 +451,6 @@ Register / Sign up Page
 ***********************/
 
 .signin-form{
-  margin: 50px auto;
   min-width: 300px;
   max-width: 400px;
   padding-bottom: 2px
@@ -460,7 +476,7 @@ input[type="search"]{
   font-size: .8rem;
   padding: .3em 1.1em;
   border-radius: 1em;
-  color: rgba(255, 255, 255, 0.89);
+  color: rebeccapurple;
   margin-right: 2em
 }
 
@@ -490,7 +506,8 @@ input[type="submit"]:hover{
   font-size: 1rem;
   border: 2px solid #94889b;
   width: 80%;
-  margin: 1em auto;
+  margin: 0 auto;
+  margin-top: var(--top);
   border-radius: 3px;
   padding: .4em 0;
   overflow: auto;
@@ -530,11 +547,9 @@ input[type="submit"]:hover{
   color: #46344E;
 }
 
-
 .connect:hover, .connect > a:hover{
   background: rgba(222, 222, 222, 0.811);;
 }
-
 
 
 
@@ -544,7 +559,6 @@ input[type="submit"]:hover{
 
 .display-tab{
   font-size: 1rem;
-  margin: .5em auto;
   height: 34em;
   display: flex;
   padding: 0;
@@ -561,10 +575,11 @@ input[type="submit"]:hover{
 }
 
 .side_panel{
-  min-width: 160px;
-  max-width: 13.75em;
+  /* min-width: 160px; */
+  /* max-width: 13.75em;*/
   margin-right: .4em;
   flex-grow: 1;
+  width: 200px;
   text-align: start;
 }
 
@@ -578,8 +593,8 @@ input[type="submit"]:hover{
 
 .main_panel{
   flex-grow: 2;
-  min-width: 12em;
-  max-width: 39em;
+  /* min-width: 12em; */
+  /* max-width: 39em; */
   text-align: start;
   overflow: hidden;
 }
@@ -605,7 +620,7 @@ input[type="submit"]:hover{
   padding-bottom: 1em
 }
 
-.detail, .offer, .listings, listings2{
+.detail, .offer, .listings, .listings2{
   height: 93%;
   overflow: auto
 }
@@ -633,15 +648,10 @@ input[type="submit"]:hover{
 .ridelist{
   display: flex;
   width: 100%;
-  /* border-bottom: 1px solid #46344E; */
   padding: 5px;
   justify-content: space-around;
   margin: 0;
 }
-
-/* .offer{
-  display: flex
-} */
 
 .ride_data{
   display: flex;
@@ -675,25 +685,24 @@ input[type="number"],
 }
 
 #ridebutton{
-  margin-top: 2em;
+  margin-top: 1em;
   padding: 1em 0;
   border-radius: .3em;
-  color: rgba(255, 255, 255, 0.893);
+  color: white;
   font-weight: 600;
+  background: rebeccapurple;
   cursor: pointer
 }
 
 #ridebutton:hover{
-  color: #46344E;
-  background: white;
+  background: rgba(102, 51, 153, 0.918)
 }
 
 input[type="number"],
 input[type="time"]{
-  color: white;
-  padding: 1em 0;
-  border: none;
-  border-bottom: 2px solid white;
+  padding: 1em;
+  border-radius: 2px;
+  /* border: none; */
 }
 
 .box{
@@ -827,7 +836,6 @@ input[type="time"]{
 
   .join{
     padding: 4px;
-    margin: 0px auto;
     border-bottom: 1px solid white;
   }
 
