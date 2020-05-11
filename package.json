@@ -63,7 +63,7 @@
     "pg": "7.4.3",
     "sinon": "6.3.3",
     "uuid": "3.3.2",
-    "validator": "10.4.0",
+    "validator": "10.11.0",
     "snyk": "^1.319.2"
   },
   "snyk": true
